@@ -1,0 +1,1 @@
+<a class="btn btn-default" href="/gtw_users/users/signout">Sign out</a>
