@@ -1,7 +1,7 @@
 <h1>Users</h1>
 
-<?php echo $this->Html->datatable('tetties');?>
-<table id='tetties' class="table table-hover table-striped">
+<?php echo $this->Html->datatable('userlist');?>
+<table id='userlist' class="table table-hover table-striped">
     <thead>
         <tr>
             <th>Email</th>

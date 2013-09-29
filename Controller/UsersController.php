@@ -5,7 +5,7 @@
  * @link      http://gintonicweb.com
  */
 
-class UsersController extends GtwUsersAppController {
+class UsersController extends AppController {
     
     public $uses = array('GtwUsers.User');
     public $components = array('RequestHandler');
@@ -57,7 +57,6 @@ class UsersController extends GtwUsersAppController {
     }
     
     public function signin(){
-        
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
                 return $this->redirect($this->Auth->redirectUrl());
@@ -71,9 +70,7 @@ class UsersController extends GtwUsersAppController {
     }
     
     public function signup() {
-        
         if ($this->request->is('post')) {
-            
             $this->User->create();
             if ($this->User->save($this->request->data)) {
                 if ($this->Auth->login()) {

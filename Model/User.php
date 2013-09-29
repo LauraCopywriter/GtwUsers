@@ -7,7 +7,7 @@
 
 App::uses('AuthComponent', 'Controller/Component');
  
-class User extends GtwUsersAppModel {
+class User extends AppModel {
 
     public $validate = array(
         'email' => array(
