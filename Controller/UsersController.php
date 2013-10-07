@@ -79,7 +79,7 @@ class UsersController extends AppController {
             }
             $this->Session->setFlash('Account can not be created');
         }
-        return $this->redirect('/gtw_users/users/signin');
+        return $this->redirect(array('action' => 'signin'));
     }
     
     public function view($id = null) {
