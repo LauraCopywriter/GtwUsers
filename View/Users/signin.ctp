@@ -6,7 +6,20 @@
 
 <div class="row">
     <div class="col-md-5">
-        <form class="form-horizontal" action='/gtw_users/users/signin' method='post'>
+        <?php 
+        echo $this->Form->create('User', array(
+            'action' => 'signin',
+            'inputDefaults' => array(
+                'div' => 'form-group',
+                'label' => array(
+                    'class' => 'col col-md-2 control-label'
+                ),
+                'wrapInput' => 'col col-md-10',
+                'class' => 'form-control'
+            ),
+            'class' => 'form-horizontal'
+        )); 
+        ?>
             <h2 class="form-signin-heading">Please sign in</h2>
             <hr/>
              <div class="form-group">
@@ -36,6 +49,20 @@
     
     <div class="col-md-6 col-md-offset-1">
         <form class="form-horizontal" action='/gtw_users/users/signup' method='post'>
+        <?php 
+        echo $this->Form->create('Users', array(
+            'action' => 'signup',
+            'inputDefaults' => array(
+                'div' => 'form-group',
+                'label' => array(
+                    'class' => 'col col-md-2 control-label'
+                ),
+                'wrapInput' => 'col col-md-10',
+                'class' => 'form-control'
+            ),
+            'class' => 'form-horizontal'
+        )); 
+        ?>
             <h2 class="form-signin-heading">Don't have an account? Sign up</h2>
             <hr/>
              <div class="form-group">
