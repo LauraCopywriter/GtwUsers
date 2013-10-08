@@ -1,11 +1,11 @@
-<h1>Users</h1>
-
 <?php 
-    $this->Helpers->load('GtwUsers.GtwUser');
+    $this->Helpers->load('GtwRequire.GtwRequire');
+    $this->GtwRequire->req("ui/app/datatables");
 ?>
 
-<?php echo $this->Html->datatable('userlist');?>
-<table id='userlist' class="table table-hover table-striped">
+<h1>Users</h1>
+
+<table class="table table-hover table-striped datatable">
     <thead>
         <tr>
             <th>Email</th>

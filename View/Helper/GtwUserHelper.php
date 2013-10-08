@@ -19,7 +19,7 @@ class GtwUserHelper extends Helper {
         if ($this->Session->read('Auth.User')){
             $name = $this->Session->read('Auth.User.email');
             $route = array(
-                'plugin' => 'gtw_users', 
+                'plugin' => 'gtw_users',
                 'controller' => 'users', 
                 'action' => 'edit',
                 $this->Session->read('Auth.User.id')
@@ -31,7 +31,7 @@ class GtwUserHelper extends Helper {
     
     public function editLnk($userId){
         return $this->Html->link(
-            '<i class="icon-edit"></i>',
+            '<i class="icon-edit"> </i>',
             array(
                 'plugin' => 'gtw_users', 
                 'controller' => 'users', 
@@ -44,7 +44,7 @@ class GtwUserHelper extends Helper {
 
     public function messageLnk($userId){
         return $this->Html->link(
-            '<i class="icon-envelope-alt"></i>',
+            '<i class="icon-envelope-alt"> </i>',
             array(
                 'plugin' => 'gtw_users', 
                 'controller' => 'users', 
@@ -57,7 +57,7 @@ class GtwUserHelper extends Helper {
     
     public function deleteLnk($userId){
         return $this->Html->link(
-            '<i class="icon-remove"></i>',
+            '<i class="icon-remove"> </i>',
             array(
                 'plugin' => 'gtw_users', 
                 'controller' => 'users', 
