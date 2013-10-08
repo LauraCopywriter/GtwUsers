@@ -8,14 +8,11 @@
 class UsersController extends AppController {
     
     public $uses = array('GtwUsers.User');
-    public $components = array('RequestHandler');
+    public $helpers = array('GtwUsers.GtwUser');
     
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow('signup', 'signin');
-        if($this->RequestHandler->responseType() == 'json'){
-            $this->RequestHandler->setContent('json', 'application/json' );
-        }
     }
 
     public function index() {
