@@ -9,6 +9,7 @@ class UsersController extends AppController {
     
     public $uses = array('GtwUsers.User');
     public $helpers = array('GtwUsers.GtwUser');
+    public $components = array('GtwUsers.GtwCookie');
     
     public function beforeFilter() {
         parent::beforeFilter();
@@ -48,14 +49,19 @@ class UsersController extends AppController {
             }
             $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
         } else {
-            $this->request->data = $this->User->read(null, $id);
-            unset($this->request->data['User']['password']);
+            $this->request->data = $this->User->safeRead(null, $id);
         }
     }
     
     public function signin(){
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
+                
+                if (isset($this->request->data['User']['remember'])){
+                    $this->User->updateToken();
+                    $this->GtwCookie->rememberMe(CakeSession::read("Auth"));
+                }
+                
                 return $this->redirect($this->Auth->redirectUrl());
             }
             $this->Session->setFlash('Username or password is incorrect');
@@ -63,6 +69,7 @@ class UsersController extends AppController {
     }
 
     public function signout() {
+        $this->GtwCookie->forgetMe();
         return $this->redirect($this->Auth->logout());
     }
     
@@ -71,6 +78,10 @@ class UsersController extends AppController {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
                 if ($this->Auth->login()) {
+                    if (isset($this->request->data['User']['remember'])){
+                        $this->User->updateToken();
+                        $this->GtwCookie->rememberMe(CakeSession::read("Auth"));
+                    }
                     return $this->redirect($this->Auth->redirectUrl());
                 }
             }
@@ -85,7 +96,7 @@ class UsersController extends AppController {
         if (!$this->User->exists()) {
             throw new NotFoundException(__('Invalid user'));
         }
-        $this->set('user', $this->User->read(null, $id));
+        $this->set('user', $this->User->safeRead(null, $id));
     }
     
 }

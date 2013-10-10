@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-md-8">
                     <label class="checkbox">
-                        <input type="checkbox" value="remember-me"> Remember me
+                        <input name="data[User][remember]" type="checkbox" value="remember-me"> Remember me fdsfds
                     </label>
                 </div>
             </div>
@@ -100,7 +100,7 @@
                 </div>
                 <div class="col-md-8">
                     <label class="checkbox">
-                        <input type="checkbox"> Remember me
+                        <input name="data[User][remember]" type="checkbox" value="remember-me"> Remember me
                     </label>
                 </div>
             </div>
