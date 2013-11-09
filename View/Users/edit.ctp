@@ -1,6 +1,6 @@
 <?php 
     $this->Helpers->load('GtwRequire.GtwRequire');
-    echo $this->GtwRequire->req('users/app/reset_password');
+    echo $this->GtwRequire->req('users/reset_password');
 ?>
 
 <?php 

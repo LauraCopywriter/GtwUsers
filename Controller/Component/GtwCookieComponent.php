@@ -12,35 +12,29 @@ class GtwCookieComponent extends Component {
     
     public $components = array('Cookie','Auth');
     
-    public function init(){
+    public function initialize(Controller $controller){
         $this->Cookie->key = Configure::read('GtwCookie.key');
+        $this->Cookie->name = Configure::read('GtwCookie.name');
         $this->Cookie->httpOnly = true;
+        $this->Controller = $controller;
     }
     
-    public function autolog(){
+    public function autoAuth(){
         if(!$this->Cookie->read('remember_me') || $this->Auth->loggedIn()){
             return;
         }
-        
-        $cookie = $this->Cookie->read('remember_me');
-
-        $this->request->data = $this->User->find('first', array(
-            'conditions' => array(
-                'User.username' => $cookie['username'],
-                'User.token' => $cookie['token'],
-                'User.token_creation >=' => date('Y-m-d H:i:s', strtotime(Configure::read('GtwCookie.loginDuration'))),
-            )
-        ));
-        
-        if(!$this->Auth->login())
-            $this->redirect(array('plugin' => 'GtwUsers', 'controller' => 'users', 'action' => 'signout' ));
-        };
+        $user = $this->Cookie->read('remember_me');
+        if(!$this->Auth->login($user['User'])){
+            $this->Controller->redirect(array('plugin' => 'GtwUsers', 'controller' => 'users', 'action' => 'signout' ));
+        }
+        return $this->Controller->redirect($this->Auth->redirectUrl());
     }
     
     public function rememberMe($userInfo){
-        $this->Cookie->write('remember_me', $userInfo, true, strtotime(Configure::read('GtwCookie.loginDuration')));
+        $this->Cookie->write('remember_me', $userInfo, true, Configure::read('GtwCookie.loginDuration'));
+        debug($this->Cookie->read('remember_me'));
     }
-    public function forgetMe($userInfo){
+    public function forgetMe(){
         $this->Cookie->delete('remember_me');
     }
     

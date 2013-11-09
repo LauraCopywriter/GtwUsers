@@ -1,6 +1,6 @@
 <?php 
     $this->Helpers->load('GtwRequire.GtwRequire');
-    $this->GtwRequire->req("ui/app/datatables");
+    $this->GtwRequire->req("ui/datatables");
 ?>
 
 <h1>Users</h1>
@@ -11,23 +11,25 @@
             <th>Email</th>
             <th>Name</th>
             <th>modified</th>
-            <th>Actions</th>
+            <th style="display:none"></th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($users as $user): ?>
         <tr>
             <td>
-                <?php echo $this->GtwUser->viewLnk($user['User']['id'], $user['User']['email']); ?>
+                <?php echo $this->Html->actionLink($user['User']['email'], 'view', $user['User']['id']); ?>
             </td>
             <td><?php echo $user['User']['last']. ', ' . $user['User']['first']; ?></td>
             <td><?php echo $user['User']['modified']; ?></td>
             <td>
-                <?php 
-                    echo $this->GtwUser->editLnk($user['User']['id']);
-                    echo $this->GtwUser->messageLnk($user['User']['id']);
-                    echo $this->GtwUser->deleteLnk($user['User']['id']); 
-                ?>
+                <span class="pull-right">
+                    <?php 
+                        echo $this->Html->actionIcon('icon-edit', 'edit', $user['User']['id']);
+                        echo $this->Html->actionIcon('icon-envelope-alt', 'mesage', $user['User']['id']);
+                        echo $this->Html->actionIcon('icon-remove', 'delete', $user['User']['id']); 
+                    ?>
+                </span>
             </td>
         </tr>
         <?php endforeach; ?>

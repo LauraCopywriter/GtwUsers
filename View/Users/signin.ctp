@@ -5,7 +5,7 @@
 ?>
 
 <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-6">
         <?php 
         echo $this->Form->create('User', array(
             'action' => 'signin',
@@ -40,17 +40,17 @@
                 </div>
                 <div class="col-md-8">
                     <label class="checkbox">
-                        <input name="data[User][remember]" type="checkbox" value="remember-me"> Remember me fdsfds
+                        <input name="data[User][remember]" type="checkbox" value="remember-me"> Remember me
                     </label>
                 </div>
             </div>
         </form>
     </div>
     
-    <div class="col-md-6 col-md-offset-1">
+    <div class="col-md-6">
         <form class="form-horizontal" action='/gtw_users/users/signup' method='post'>
         <?php 
-        echo $this->Form->create('Users', array(
+        echo $this->Form->create('User', array(
             'action' => 'signup',
             'inputDefaults' => array(
                 'div' => 'form-group',

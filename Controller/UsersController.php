@@ -8,7 +8,10 @@
 class UsersController extends AppController {
     
     public $uses = array('GtwUsers.User');
-    public $helpers = array('GtwUsers.GtwUser');
+    public $helpers = array(
+        'Html' => array('className' => 'GtwUi.GtwHtml')
+    );
+    
     public $components = array('GtwUsers.GtwCookie');
     
     public function beforeFilter() {
@@ -56,18 +59,15 @@ class UsersController extends AppController {
     public function signin(){
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
-                
                 if (isset($this->request->data['User']['remember'])){
-                    $this->User->updateToken();
                     $this->GtwCookie->rememberMe(CakeSession::read("Auth"));
                 }
-                
                 return $this->redirect($this->Auth->redirectUrl());
             }
             $this->Session->setFlash('Username or password is incorrect');
         }
     }
-
+    
     public function signout() {
         $this->GtwCookie->forgetMe();
         return $this->redirect($this->Auth->logout());
@@ -82,7 +82,7 @@ class UsersController extends AppController {
                         $this->User->updateToken();
                         $this->GtwCookie->rememberMe(CakeSession::read("Auth"));
                     }
-                    return $this->redirect($this->Auth->redirectUrl());
+                    //return $this->redirect($this->Auth->redirectUrl());
                 }
             }
             $this->Session->setFlash('Account can not be created');

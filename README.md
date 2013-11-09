@@ -15,6 +15,6 @@ Add a [cookie key](http://book.cakephp.org/2.0/en/core-libraries/components/cook
 
     Configure::write('GtwCookies.key', '1198faeb48r2r3bef0503');
     
-Add [a duration](http://php.net/manual/en/function.strtotime.php) for the Cookie
+Add [a duration](http://www.php.net/manual/en/datetime.formats.relative.php) for the Cookie
 
     Configure::write('GtwCookies.loginDuration', '+2 weeks');
