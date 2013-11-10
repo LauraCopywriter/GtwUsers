@@ -1,7 +1,7 @@
 <?php if ($this->Session->read('Auth.User')): ?>
-    <li class="dropdown">
+    <li id="<?php echo $this->fetch('users_li_id'); ?>" class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <?php echo $this->Session->read('Auth.User.email'); ?> <b class="caret"></b>
+            <span class='link-extendedo'><?php echo $this->Session->read('Auth.User.email'); ?> <b class="caret"></b></span>
         </a>
         <ul class="dropdown-menu">
             <li>
