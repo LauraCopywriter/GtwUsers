@@ -16,7 +16,7 @@ class UsersController extends AppController {
     
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('signup', 'signin');
+        $this->Auth->allow('signup', 'signin', 'confirmation');
     }
 
     public function index() {
@@ -57,14 +57,27 @@ class UsersController extends AppController {
     }
     
     public function signin(){
+        $this->layout = false;
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
+                if (!$this->request->data['User']['validated']){
+                    $this->Session->setFlash(
+                        // TODO: add a link to profile. http://stackoverflow.com/questions/6556583/cakephp-html-in-setflash
+                        'Please don\'t forget to validate your email address.', 
+                        'alert', array(
+                            'plugin' => 'BoostCake',
+                            'class' => 'alert-danger'
+                    ));
+                }
                 if (isset($this->request->data['User']['remember'])){
                     $this->GtwCookie->rememberMe(CakeSession::read("Auth"));
                 }
                 return $this->redirect($this->Auth->redirectUrl());
             }
-            $this->Session->setFlash('Username or password is incorrect');
+            $this->Session->setFlash('Username or password is incorrect', 'alert', array(
+                'plugin' => 'BoostCake',
+                'class' => 'alert-danger'
+            ));
         }
     }
     
@@ -74,20 +87,52 @@ class UsersController extends AppController {
     }
     
     public function signup() {
+        $this->layout = false;
+        
         if ($this->request->is('post')) {
             $this->User->create();
-            if ($this->User->save($this->request->data)) {
-                if ($this->Auth->login()) {
-                    if (isset($this->request->data['User']['remember'])){
-                        $this->User->updateToken();
-                        $this->GtwCookie->rememberMe(CakeSession::read("Auth"));
-                    }
-                    //return $this->redirect($this->Auth->redirectUrl());
-                }
+            if($this->User->save($this->request->data)){
+                $this->User->signupMail($this->request->data['User']['email']);
+                $this->Session->setFlash('Please check your e-mail to validate your account', 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-success'
+                ));
+            }else{
+                $this->Session->setFlash('Error creating your account, please contact an administrator', 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-danger'
+                ));
             }
-            $this->Session->setFlash('Account can not be created');
+            
+            return $this->redirect($this->Auth->redirectUrl());
         }
-        return $this->redirect(array('action' => 'signin'));
+    }
+    
+    public function confirmation($userId = null, $token = null) {
+        $this->layout = false;
+        
+        if($userId || $token){
+            $user = $this->User->confirmation($userId, $token);
+            if (isset($user) && $this->Auth->login($user['User'])) {
+                $this->Session->setFlash('Email address successfuly validated', 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-success'
+                ));
+                return $this->redirect($this->Auth->redirectUrl());
+            } else {
+                $this->Session->setFlash('The authorization link provided is erroneous, please contact an administrator', 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-danger'
+                ));
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+        }
+        
+        $this->Session->setFlash('Please check your e-mail for validation link', 'alert', array(
+            'plugin' => 'BoostCake',
+            'class' => 'alert-info'
+        ));
+        return $this->redirect($this->Auth->redirectUrl());
     }
     
     public function view($id = null) {
@@ -97,6 +142,15 @@ class UsersController extends AppController {
             throw new NotFoundException(__('Invalid user'));
         }
         $this->set('user', $this->User->safeRead(null, $id));
+    }
+    
+    public function update_avatar($userId, $fileId){
+        $user = $this->User->safeRead(null, $userId);
+        $oldFile = $user['User']['file_id'];
+        $user['User']['file_id'] = $fileId;
+        if ($this->User->save($user)) {
+            $this->User->File->delete($oldFile);
+        }
     }
     
 }

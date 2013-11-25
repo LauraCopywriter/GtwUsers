@@ -1,109 +1,49 @@
-<?php
-/*
-    Needs parsleyjs or some kind of client side validation
-*/
-?>
-
-<div class="row">
-    <div class="col-md-6">
-        <?php 
-        echo $this->Form->create('User', array(
-            'action' => 'signin',
-            'inputDefaults' => array(
-                'div' => 'form-group',
-                'label' => array(
-                    'class' => 'col col-md-2 control-label'
-                ),
-                'wrapInput' => 'col col-md-10',
-                'class' => 'form-control'
-            ),
-            'class' => 'form-horizontal'
-        )); 
-        ?>
-            <h2 class="form-signin-heading">Please sign in</h2>
-            <hr/>
-             <div class="form-group">
-                <label for="signin-email" class="col-md-2 control-label">Email</label>
-                <div class="col-md-10">
-                    <input id="signin-email" name="data[User][email]" type="email" class="form-control" placeholder="Email address">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="signin-password" class="col-md-2 control-label">Password</label>
-                <div class="col-md-10">
-                    <input id="signin-password" name="data[User][password]" type="password" class="form-control" placeholder="Password">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-2">
-                    <button class="btn btn-primary" type="submit">Sign in</button>
-                </div>
-                <div class="col-md-8">
-                    <label class="checkbox">
-                        <input name="data[User][remember]" type="checkbox" value="remember-me"> Remember me
+<?php echo $this->Html->css('/css/theme'); ?>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <h1 class="text-center login-title">Sign in to continue</h1>
+            <div class="account-wall">
+            
+                <img class="profile-img" src="/img/logo.png" alt="">
+                <?php echo $this->Form->create('User', array(
+                        'action' => 'signin',
+                        'class' => 'form-signin'
+                ));?>
+                    <?php echo $this->Session->flash(); ?>
+                    <input name="data[User][email]" type="text" class="form-control" placeholder="Email" required autofocus>
+                    <input name="data[User][password]" type="password" class="form-control" placeholder="Password" required>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    <label class="checkbox pull-left">
+                        <input name="data[User][remember]" type="checkbox" value="remember-me">
+                        Remember me
                     </label>
-                </div>
+                    
+                    <?php echo $this->Html->link('Forgot your password?',
+                        array(
+                            'plugin' => 'gtw_users',
+                            'controller' => 'users',
+                            'action' => 'signup'
+                        ),
+                        array(
+                            'class' => 'pull-right need-help'
+                        )
+                    );?>
+                    <span class="clearfix"></span>
+                    
+                </form>
+                
             </div>
-        </form>
-    </div>
-    
-    <div class="col-md-6">
-        <form class="form-horizontal" action='/gtw_users/users/signup' method='post'>
-        <?php 
-        echo $this->Form->create('User', array(
-            'action' => 'signup',
-            'inputDefaults' => array(
-                'div' => 'form-group',
-                'label' => array(
-                    'class' => 'col col-md-2 control-label'
+            <?php echo $this->Html->link('Create an account',
+                array(
+                    'plugin' => 'gtw_users',
+                    'controller' => 'users',
+                    'action' => 'signup'
                 ),
-                'wrapInput' => 'col col-md-10',
-                'class' => 'form-control'
-            ),
-            'class' => 'form-horizontal'
-        )); 
-        ?>
-            <h2 class="form-signin-heading">Don't have an account? Sign up</h2>
-            <hr/>
-             <div class="form-group">
-                <label class="col-md-2 control-label">Name</label>
-                <div class="col-md-5">
-                    <label for="signup-first" class='sr-only'>First</label>
-                    <input id="signup-first" name="data[User][first]" type="name" class="form-control" placeholder="First">
-                </div>
-                <div class="col-md-5">
-                    <label for="signup-last" class='sr-only'>Last</label>
-                    <input id="signup-last" name="data[User][last]" type="name" class="form-control" placeholder="Last">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="signup-email" class="col-md-2 control-label">Email</label>
-                <div class="col-md-10">
-                    <input id="signup-email" name="data[User][email]" type="email" class="form-control" placeholder="Email">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="signup-password" class="col-md-2 control-label">Password</label>
-                <div class="col-md-10">
-                    <input id="signup-password" name="data[User][password]" type="password" class="form-control" placeholder="Password">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="signup-pwdconfirm" class="sr-only">Password Confirmation</label>
-                <div class="col-md-10 col-md-offset-2">
-                    <input id="signup-pwdconfirm" type="password" class="form-control" placeholder="Password Confirmation">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-2">
-                    <button type="submit" class="btn btn-primary">Sign up</button>
-                </div>
-                <div class="col-md-8">
-                    <label class="checkbox">
-                        <input name="data[User][remember]" type="checkbox" value="remember-me"> Remember me
-                    </label>
-                </div>
-            </div>
-        </form>
+                array(
+                    'class' => 'text-center new-account'
+                )
+            );?>
+        </div>
     </div>
 </div>

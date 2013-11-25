@@ -24,10 +24,12 @@
     </li>
 <?php else: ?>
 
-    <?php echo $this->Html->link('sign in | sign up', array(
-        'plugin' => 'gtw_users', 
-        'controller' => 'users', 
-        'action' => 'signin'
-    )); ?>
+    <li>
+        <?php echo $this->Html->link('sign in | sign up', array(
+            'plugin' => 'gtw_users', 
+            'controller' => 'users', 
+            'action' => 'signin'
+        )); ?>
+    </li>
 
 <?php endif; ?>
