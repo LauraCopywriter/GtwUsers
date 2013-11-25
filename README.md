@@ -4,9 +4,11 @@ This plugin is under development and should not be used in it's current state.
 
 ## Requirements
 
-TODO
+CakePHP 2.4.0+  
+[GtwUi](https://github.com/Phillaf/GtwUi)
 
 ## Installation
+
 Copy this plugin in a folder named `app/Plugin/GtwUsers` or add these lines to your `composer.json` file :
 
         "require": {
