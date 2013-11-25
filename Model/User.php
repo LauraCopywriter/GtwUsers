@@ -104,7 +104,6 @@ class User extends AppModel {
         $email->subject('Account validation');
         $email->transport('Debug');
         $response = $email->send();
-        debug($response);exit;
     }
     
     public function confirmation($userId, $token) {
