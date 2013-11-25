@@ -45,14 +45,3 @@
         </div>
     </div>
 </div>
-
-    <?php echo Router::url( $this->here, true ); ?> http://localhost/gtw_users/users/signup 
-    <br>
-    <?php echo $this->here; ?> /gtw_users/users/signup
-    <br>
-    <?php echo $_SERVER[ 'REQUEST_URI' ]; ?> /gtw_users/users/signup  
-    <br>
-    <?php echo $this->Html->url( null, true ); ?> http://localhost/gtw_users/users/signup
-    <br>
-    <?php debug(FULL_BASE_URL); ?>
-    
