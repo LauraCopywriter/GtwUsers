@@ -10,7 +10,7 @@ TODO
 Copy this plugin in a folder named `app/Plugin/GtwUsers` or add these lines to your `composer.json` file :
 
         "require": {
-            "phillaf/gtw_require": "*@dev"
+            "phillaf/gtw_users": "*@dev"
         }
     
 Create a symlink from this plugin's webroot to the application webroot by running `Console/cake GtwUsers.symlink`
