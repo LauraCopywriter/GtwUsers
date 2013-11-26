@@ -19,7 +19,7 @@
                         Remember me
                     </label>
                     
-                    <?php echo $this->Html->link('Forgot your password?',
+                    <?php echo $this->Html->link('Need help?',
                         array(
                             'plugin' => 'gtw_users',
                             'controller' => 'users',

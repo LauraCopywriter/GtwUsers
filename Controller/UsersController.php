@@ -59,25 +59,31 @@ class UsersController extends AppController {
     public function signin(){
         $this->layout = false;
         if ($this->request->is('post')) {
+            
+            // User needs to be validated
+            if (!$this->User->isValidated($this->request->data['User']['email'])){
+                $this->Session->setFlash(
+                    'Please validate your email address.', 
+                    'alert', array(
+                        'plugin' => 'BoostCake',
+                        'class' => 'alert-danger'
+                ));
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+            
+            // login
             if ($this->Auth->login()) {
-                if (!$this->request->data['User']['validated']){
-                    $this->Session->setFlash(
-                        // TODO: add a link to profile. http://stackoverflow.com/questions/6556583/cakephp-html-in-setflash
-                        'Please don\'t forget to validate your email address.', 
-                        'alert', array(
-                            'plugin' => 'BoostCake',
-                            'class' => 'alert-danger'
-                    ));
-                }
                 if (isset($this->request->data['User']['remember'])){
                     $this->GtwCookie->rememberMe(CakeSession::read("Auth"));
                 }
                 return $this->redirect($this->Auth->redirectUrl());
+            } else {
+                $this->Session->setFlash('Username or password is incorrect', 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-danger'
+                ));
+                return $this->redirect($this->Auth->redirectUrl());
             }
-            $this->Session->setFlash('Username or password is incorrect', 'alert', array(
-                'plugin' => 'BoostCake',
-                'class' => 'alert-danger'
-            ));
         }
     }
     

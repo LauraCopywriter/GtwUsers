@@ -77,6 +77,15 @@ class User extends AppModel {
         return $this->save();
     }
     
+    public function isValidated($email){
+    
+        $user = $this->findByEmail($email);
+        if (!isset($user)){
+            return false;
+        }
+        return $user['User']['validated'];
+    }
+    
     public function signupMail($email){
         $user = $this->findByEmail($email);
         unset($user['User']['password']);
