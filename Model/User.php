@@ -102,7 +102,6 @@ class User extends AppModel {
         $email->from(Configure::read('Gtw.admin_mail'));
         $email->to($user['User']['email']);
         $email->subject('Account validation');
-        $email->transport('Debug');
         $response = $email->send();
     }
     
