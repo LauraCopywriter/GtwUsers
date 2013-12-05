@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-group">
                         <label for="signup-email">Email address</label>
-                        <input id="signup-email" name="data[User][email]" type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" parsley-trigger="change" required>
+                        <input id="signup-email" name="data[User][email]" type="email" class="form-control" placeholder="Email" parsley-trigger="change" required>
                     </div>
                     <div class="form-group">
                         <label for="signup-password">Password</label>
