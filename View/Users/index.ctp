@@ -1,6 +1,12 @@
 <?php 
-    $this->Helpers->load('GtwRequire.GtwRequire');
-    $this->GtwRequire->req("ui/datatables");
+/**
+ * Gintonic Web
+ * @author    Philippe Lafrance
+ * @link      http://gintonicweb.com
+ */
+
+$this->Helpers->load('GtwRequire.GtwRequire');
+$this->GtwRequire->req("ui/datatables");
 ?>
 
 <h1>Users</h1>
