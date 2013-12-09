@@ -54,6 +54,9 @@ class UsersController extends AppController {
         } else {
             $this->request->data = $this->User->safeRead(null, $id);
         }
+        if (CakePlugin::loaded('GtwFiles')){
+            $this->render('/Users/edit_avatar');
+        }
     }
     
     public function signin(){
