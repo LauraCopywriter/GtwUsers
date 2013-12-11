@@ -21,7 +21,13 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-4">
+        <div id = "upload-alert"></div>
+        <div id="modal-loader"></div>
+        <img src="http://i.imgur.com/dCVa3ik.jpg" class="img-responsive img-thumbnail" alt="Responsive image">
+        <button type="button" class="btn btn-default upload" data-loading-text="Loading..." data-upload-callback="users/update_avatar">Change Avatar</button>
+    </div>
+    <div class="col-md-8">
         <fieldset>
             <?php echo $this->Form->input('email', array(
                 'label' => 'Email',
