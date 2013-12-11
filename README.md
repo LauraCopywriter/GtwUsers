@@ -17,7 +17,10 @@ Copy this plugin in a folder named `app/Plugin/GtwUsers` or add these lines to y
     
 Create a symlink from this plugin's webroot to the application webroot by running `Console/cake GtwUsers.symlink`
 
-Load the plugin by adding this line to `app/Config/bootstrap.php` : `CakePlugin::load('GtwUsers');`
+Load the plugin and define the website's support email by adding these lines to `app/Config/bootstrap.php` : 
+
+    CakePlugin::load('GtwUsers');
+    Configure::write('Gtw.admin_mail', 'your@email.com');
     
 Add a [cookie key](http://book.cakephp.org/2.0/en/core-libraries/components/cookie.html) app/Config/bootstrap.php
 

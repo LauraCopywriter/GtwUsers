@@ -78,7 +78,6 @@ class User extends AppModel {
     }
     
     public function isValidated($email){
-    
         $user = $this->findByEmail($email);
         if (!isset($user)){
             return false;
