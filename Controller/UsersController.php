@@ -60,21 +60,19 @@ class UsersController extends AppController {
         $this->layout = false;
         if ($this->request->is('post')) {
             
-            // User needs to be validated
-            if (!$this->User->isValidated($this->request->data['User']['email'])){
-                $this->Session->setFlash(
-                    'Please validate your email address.', 
-                    'alert', array(
-                        'plugin' => 'BoostCake',
-                        'class' => 'alert-danger'
-                ));
-                return $this->redirect($this->Auth->redirectUrl());
-            }
-            
             // login
             if ($this->Auth->login()) {
                 if (isset($this->request->data['User']['remember'])){
                     $this->GtwCookie->rememberMe(CakeSession::read("Auth"));
+                }
+                // User needs to be validated
+                if (!$this->User->isValidated($this->request->data['User']['email'])){
+                    $this->Session->setFlash(
+                        'Please validate your email address.', 
+                        'alert', array(
+                            'plugin' => 'BoostCake',
+                            'class' => 'alert-danger'
+                    ));
                 }
                 return $this->redirect($this->Auth->redirectUrl());
             } else {
@@ -82,7 +80,7 @@ class UsersController extends AppController {
                     'plugin' => 'BoostCake',
                     'class' => 'alert-danger'
                 ));
-                return $this->redirect($this->Auth->redirectUrl());
+                return $this->redirect($this->Auth->loginAction);
             }
         }
     }
