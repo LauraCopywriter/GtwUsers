@@ -5,6 +5,7 @@
 </div>
 <div class="row">
     <div class="col-md-4">
+        <img src="http://i.imgur.com/dCVa3ik.jpg" class="img-responsive img-thumbnail" alt="Responsive image">
         <h2><a href="mailto:<?php echo $user['User']['email']?>"><?php echo $user['User']['email']; ?></a></h2>
     </div>
     <div class="col-md-8">

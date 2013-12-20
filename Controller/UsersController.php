@@ -151,6 +151,9 @@ class UsersController extends AppController {
             throw new NotFoundException(__('Invalid user'));
         }
         $this->set('user', $this->User->safeRead(null, $id));
+        if (CakePlugin::loaded('GtwFiles')){
+            $this->render('/Users/view_avatar');
+        }
     }
     
     public function update_avatar($userId, $fileId){
