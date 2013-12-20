@@ -17,6 +17,10 @@ class UsersController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow('signup', 'signin', 'confirmation');
+        
+        if( is_null( Configure::read('Gtw.admin_mail') ) ){
+            echo 'users plugin configuration error'; exit;
+        }
     }
 
     public function index() {
@@ -63,21 +67,19 @@ class UsersController extends AppController {
         $this->layout = false;
         if ($this->request->is('post')) {
             
-            // User needs to be validated
-            if (!$this->User->isValidated($this->request->data['User']['email'])){
-                $this->Session->setFlash(
-                    'Please validate your email address.', 
-                    'alert', array(
-                        'plugin' => 'BoostCake',
-                        'class' => 'alert-danger'
-                ));
-                return $this->redirect($this->Auth->redirectUrl());
-            }
-            
             // login
             if ($this->Auth->login()) {
                 if (isset($this->request->data['User']['remember'])){
                     $this->GtwCookie->rememberMe(CakeSession::read("Auth"));
+                }
+                // User needs to be validated
+                if (!$this->User->isValidated($this->request->data['User']['email'])){
+                    $this->Session->setFlash(
+                        'Please validate your email address.', 
+                        'alert', array(
+                            'plugin' => 'BoostCake',
+                            'class' => 'alert-danger'
+                    ));
                 }
                 return $this->redirect($this->Auth->redirectUrl());
             } else {
@@ -85,7 +87,7 @@ class UsersController extends AppController {
                     'plugin' => 'BoostCake',
                     'class' => 'alert-danger'
                 ));
-                return $this->redirect($this->Auth->redirectUrl());
+                return $this->redirect($this->Auth->loginAction);
             }
         }
     }
