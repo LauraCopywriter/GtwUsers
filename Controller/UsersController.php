@@ -16,10 +16,10 @@ class UsersController extends AppController {
     
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('signup', 'signin', 'confirmation');
+        $this->Auth->allow('signup', 'signin', 'signout', 'confirmation');
         
         if( is_null( Configure::read('Gtw.admin_mail') ) ){
-            echo 'users plugin configuration error'; exit;
+            echo 'Users plugin configuration error'; exit;
         }
     }
 
