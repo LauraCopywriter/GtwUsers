@@ -128,5 +128,48 @@ class User extends AppModel {
         
         return $user;
     }
-    
+	public function ForgotPasswordEmail($email){
+        $user = $this->findByEmail($email);
+        $arrResponse = array('status'=>'fail','message'=>'Unable to send forgot password email, Please try again');
+        if(empty($user)){
+        	return array('status'=>'fail','message'=>'No matching email found');	
+        }elseif (empty($user['User']['validated'])){
+        	return array('status'=>'fail','message'=>'Your email is not validated yet');
+        }
+        unset($user['User']['password']);
+        
+        $user['User']['token'] = md5(uniqid(rand(),true));
+        $user['User']['token_creation'] = date("Y-m-d H:i:s");
+        
+        $this->save($user);
+        if($this->sendForgotPasswordEmail($user)){
+        	$arrResponse = array('status'=>'success','message'=>'Please check your e-mail for forgot password');	
+        }
+        return $arrResponse ;
+    }
+	public function sendForgotPasswordEmail($user){
+        App::uses('CakeEmail', 'Network/Email');
+        $email = new CakeEmail();
+        $email->template('GtwUsers.forgot_password');
+        $email->emailFormat('html');
+        $email->viewVars(array('userId' => $user['User']['id'], 'token' => $user['User']['token']));
+        
+        $email->from(Configure::read('Gtw.admin_mail'));
+        $email->to($user['User']['email']);
+        $email->subject('Forgot Password');
+        return $email->send();
+    }
+    public function checkForgotPassword($userId, $token) {
+    	App::uses('CakeTime', 'Utility');
+    	$arrResponse = array('status'=>'fail','message'=>'Invalid forgot password token');
+        $user = $this->safeRead(null, $userId);
+        if(!empty($user) && $user['User']['token'] == $token){
+        	if(!CakeTime::wasWithinLast('+1 day',$this->data['User']['token_creation'])){
+        		$arrResponse = array('status'=>'fail','message'=>'Forgot Password token is expired');		
+        	}else{
+        		$arrResponse = array('status'=>'success','message'=>'Valid Token');
+        	}
+        }
+        return $arrResponse;        
+    }    
 }
