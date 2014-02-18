@@ -16,7 +16,7 @@ class UsersController extends AppController {
     
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('signup', 'signin', 'signout', 'confirmation');
+        $this->Auth->allow('signup', 'signin', 'signout', 'confirmation','forgot_password','reset_password');
         
         if( is_null( Configure::read('Gtw.admin_mail') ) ){
             echo 'Users plugin configuration error'; exit;
@@ -124,7 +124,13 @@ class UsersController extends AppController {
         
         if($userId || $token){
             $user = $this->User->confirmation($userId, $token);
-            if (isset($user) && $this->Auth->login($user['User'])) {
+            if(!empty($user['User']['validated'])){
+           		$this->Session->setFlash('Your email address is already validated, please use email and password to login', 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-danger'
+                ));
+                return $this->redirect($this->Auth->redirectUrl());
+            }elseif (isset($user) && $this->Auth->login($user['User'])) {
                 $this->Session->setFlash('Email address successfuly validated', 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-success'
@@ -166,5 +172,68 @@ class UsersController extends AppController {
             $this->User->File->delete($oldFile);
         }
     }
-    
+    public function forgot_password(){
+    	//Check For Already Logged In
+    	if ($this->Auth->login()){
+ 			return $this->redirect($this->Auth->redirectUrl());   		
+    	}    
+    	$this->layout = false;
+        if ($this->request->is('post')){
+        	$arrResponse = $this->User->ForgotPasswordEmail($this->request->data['User']['email']);
+        	if(!empty($arrResponse)){
+       			if($arrResponse['status']=='fail'){
+     				$this->Session->setFlash($arrResponse['message'], 'alert', array(
+                    		'plugin' => 'BoostCake',
+                    		'class' => 'alert-danger'
+               		));		
+       			}else{
+       				$this->Session->setFlash($arrResponse['message'], 'alert', array(
+                    		'plugin' => 'BoostCake',
+                    		'class' => 'alert-success'
+               		));
+               		return $this->redirect($this->Auth->redirectUrl());
+       			}
+        	}
+        }
+    }
+	public function reset_password($userId = null, $token = null){
+        $this->layout = false;        
+        if($userId && $token){
+        	$arrResponse = $this->User->checkForgotPassword($userId,$token);
+        	if($arrResponse['status']=='fail'){
+        		$this->Session->setFlash($arrResponse['message'], 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-danger'
+                ));
+                return $this->redirect($this->Auth->loginAction);
+        	}        	            
+        }else{
+        	$this->Session->setFlash('Invalid Token', 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-danger'
+                ));
+			return $this->redirect($this->Auth->loginAction);
+        }
+        $this->set(compact('userId','token'));
+        if ($this->request->is('post')) {
+        	if($this->request->data['User']['new_password'] != $this->request->data['User']['new_password']){
+				$this->Session->setFlash('New Password and Confirm Password must be same', 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-danger'
+                ));       		
+        	}else{
+        		$this->request->data['User']['id'] = $userId; 
+        		$this->request->data['User']['password'] = $this->request->data['User']['new_password'];
+        		$this->request->data['User']['token'] = md5(uniqid(rand(),true));
+        		$this->request->data['User']['token_creation'] = date("Y-m-d H:i:s");
+        		$this->User->save($this->request->data);
+        		
+        		$this->Session->setFlash('Your password has been updated successfully', 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-success'
+                ));
+                return $this->redirect($this->Auth->loginAction);
+        	}
+        }
+    }
 }
