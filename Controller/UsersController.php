@@ -16,7 +16,12 @@ class UsersController extends AppController {
     
     public function beforeFilter() {
         parent::beforeFilter();
+        
         $this->Auth->allow('signup', 'signin', 'signout', 'confirmation','forgot_password','reset_password');
+        
+        if( $this->Session->read('Auth.User') ){
+            $this->Auth->allow('edit');
+        }
         
         if( is_null( Configure::read('Gtw.admin_mail') ) ){
             echo 'Users plugin configuration error'; exit;
@@ -44,8 +49,10 @@ class UsersController extends AppController {
         return $this->redirect(array('action' => 'index'));
     }
     
-    public function edit($id = null) {
-        $this->User->id = $id;
+    public function edit() {
+    
+        $this->User->id = $this->Session->read('Auth.User')['id'];
+        
         if (!$this->User->exists()) {
             throw new NotFoundException(__('Invalid user'));
         }
@@ -56,7 +63,7 @@ class UsersController extends AppController {
             }
             $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
         } else {
-            $this->request->data = $this->User->safeRead(null, $id);
+            $this->request->data = $this->User->safeRead(null, $this->User->id);
         }
         if (CakePlugin::loaded('GtwFiles')){
             $this->render('/Users/edit_avatar');
@@ -196,6 +203,7 @@ class UsersController extends AppController {
             }
         }
     }
+    
     public function reset_password($userId = null, $token = null){
         $this->layout = false;        
         if($userId && $token){
