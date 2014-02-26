@@ -51,7 +51,8 @@ class UsersController extends AppController {
     
     public function edit() {
     
-        $this->User->id = $this->Session->read('Auth.User')['id'];
+        $user = $this->Session->read('Auth.User');
+        $this->User->id = $user['id'];
         
         if (!$this->User->exists()) {
             throw new NotFoundException(__('Invalid user'));
