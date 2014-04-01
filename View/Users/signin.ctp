@@ -29,16 +29,6 @@
                             'class' => 'pull-right need-help'
                         )
                     );?>
-                    <div class="clearfix"></div>
-                    <span class='pull-left'>
-                        <?php echo $this->Html->link('Forgot your password?',
-                            array(
-                                'plugin' => 'gtw_users',
-                                'controller' => 'users',
-                                'action' => 'forgot_password'
-                            )
-                        );?>
-                    </span>    
                     <span class="clearfix"></span>
                     
                 </form>

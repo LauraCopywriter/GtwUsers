@@ -15,6 +15,10 @@ class User extends AppModel {
                 'rule' => array('notEmpty'),
                 'message' => 'An email address is required'
             ),
+            'email' => array(
+                'rule' => array('email'),
+                'message' => 'Please enter valid Email Address'
+            ),
             'unique' => array(
                 'rule' => 'isUnique',
                 'required' => 'create',
