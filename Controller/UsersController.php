@@ -116,13 +116,14 @@ class UsersController extends AppController {
                     'plugin' => 'BoostCake',
                     'class' => 'alert-success'
                 ));
-                return $this->redirect($this->Auth->redirectUrl());
             }else{
                 $this->Session->setFlash('Error creating your account, please contact an administrator', 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-danger'
                 ));
-            }                        
+            }
+            
+            return $this->redirect($this->Auth->redirectUrl());
         }
     }
     

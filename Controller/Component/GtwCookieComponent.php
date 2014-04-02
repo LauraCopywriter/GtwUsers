@@ -32,7 +32,6 @@ class GtwCookieComponent extends Component {
     
     public function rememberMe($userInfo){
         $this->Cookie->write('remember_me', $userInfo, true, Configure::read('GtwCookie.loginDuration'));
-        debug($this->Cookie->read('remember_me'));
     }
     public function forgetMe(){
         $this->Cookie->delete('remember_me');
