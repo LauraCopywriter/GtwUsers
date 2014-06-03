@@ -244,4 +244,6 @@ class UsersController extends AppController {
             }
         }
     }
+    function profile(){
+	}
 }
