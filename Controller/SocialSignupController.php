@@ -107,6 +107,7 @@ class SocialSignupController extends AppController {
                 $this->User->create();
             }
             
+            $arrUser["validated"] = "1";
             $this->User->saveAll(array("User"=>$arrUser), array('validate' => false));
             $this->Auth->login($arrUser);
             $arrUser['user_id'] = $this->User->id;
@@ -124,6 +125,8 @@ class SocialSignupController extends AppController {
             }else{
                 $this->SocialConnect->create();
             }
+            
+            
             $this->SocialConnect->save(array("SocialConnect"=>$arrUser));                
             
             if($this->Auth->login()){
