@@ -19,11 +19,11 @@
                         Remember me
                     </label>
                     
-                    <?php echo $this->Html->link('Need help?',
+                    <?php echo $this->Html->link('Forgot Password?',
                         array(
                             'plugin' => 'gtw_users',
                             'controller' => 'users',
-                            'action' => 'signup'
+                            'action' => 'forgot_password'
                         ),
                         array(
                             'class' => 'pull-right need-help'
@@ -34,16 +34,45 @@
                 </form>
                 
             </div>
-            <?php echo $this->Html->link('Create an account',
-                array(
-                    'plugin' => 'gtw_users',
-                    'controller' => 'users',
-                    'action' => 'signup'
-                ),
-                array(
-                    'class' => 'text-center new-account'
-                )
-            );?>
+            <div>
+            <?php 
+                echo $this->Html->link('Create an account',
+                    array(
+                        'plugin' => 'gtw_users',
+                        'controller' => 'users',
+                        'action' => 'signup'
+                    ),
+                    array(
+                        'class' => 'text-center new-account',
+                        'style' => 'display:inline-block'
+                    )
+                );
+                echo "&nbsp;&nbsp;|&nbsp;&nbsp;";
+                echo $this->Html->link($this->Html->image("GtwUsers.icon_facebook.png", array("height"=>"22")),
+                    array(
+                        'plugin' => 'gtw_users',
+                        'controller' => 'social_signup',
+                        'action' => 'facebook'
+                    ),
+                    array(        
+                        'title'=> 'Login using Facebook',
+                        'escape' => false
+                    )
+                );
+                echo "&nbsp;";
+                echo $this->Html->link($this->Html->image("GtwUsers.icon_google.png", array("height"=>"22")),
+                    array(
+                        'plugin' => 'gtw_users',
+                        'controller' => 'social_signup',
+                        'action' => 'google'
+                    ),
+                    array(                       
+                        'title'=> 'Login using Google',
+                        'escape' => false
+                    )
+                );
+            ?>            
+            </div>            
         </div>
     </div>
 </div>
