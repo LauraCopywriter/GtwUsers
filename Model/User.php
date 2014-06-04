@@ -10,6 +10,18 @@ App::uses('AuthComponent', 'Controller/Component');
 class User extends AppModel {
 
     public $validate = array(
+        'first' => array(
+            'required' => array(
+                'rule' => array('notEmpty'),
+                'message' => 'First name is required'
+            )           
+        ),
+        'last' => array(
+            'required' => array(
+                'rule' => array('notEmpty'),
+                'message' => 'Last name is required'
+            )           
+        ),
         'email' => array(
             'required' => array(
                 'rule' => array('notEmpty'),
