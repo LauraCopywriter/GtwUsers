@@ -28,44 +28,65 @@ class UsersController extends AppController {
         }
     }
     
-    public function index() {
-        $this->User->recursive = 0;
-        $this->set('users', $this->paginate());
-    }
+    public function index(){   
+        	$this->User->recursive = 0;
+		$arrConditions = array();
+		if($this->Session->read('Auth.User.role')!='admin'){
+			//$arrConditions = array('company_id'=>$this->Session->read('Auth.User.company_id'));
+		}
+                        $this->paginate = array(
+                            'User' => array(
+				'order' => array('id' => 'desc'),
+				//'conditions' => $arrConditions
+			)
+		);
+        $this->set('users', $this->paginate('User'));
+	}
 
     public function delete($id = null) {
-        if (!$this->request->is('post')) {
-            throw new MethodNotAllowedException();
-        }
         $this->User->id = $id;
         if (!$this->User->exists()) {
-            throw new NotFoundException(__('Invalid user'));
+			$this->Session->setFlash(__('Invalid user'), 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-danger'
+                ));
         }
         if ($this->User->delete()) {
-            $this->Session->setFlash(__('User deleted'));
+            $this->Session->setFlash(__('User deleted'), 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-success'
+                ));
             return $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('User was not deleted'));
+		$this->Session->setFlash(__('User was not deleted'), 'alert', array(
+				'plugin' => 'BoostCake',
+				'class' => 'alert-danger'
+			));
         return $this->redirect(array('action' => 'index'));
     }
     
-    public function edit() {
-    
-        $user = $this->Session->read('Auth.User');
-        $this->User->id = $user['id'];
+    public function edit($userId=0) {
+        $this->User->id = $userId;
         
         if (!$this->User->exists()) {
             throw new NotFoundException(__('Invalid user'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('The user has been saved'));
+				$this->Session->setFlash(__('The user has been saved'), 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-success'
+                ));
                 return $this->redirect(array('action' => 'index'));
             }
-            $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+			$this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-danger'
+                ));
         } else {
             $this->request->data = $this->User->safeRead(null, $this->User->id);
         }
+        $this->set('companies',$this->User->find('list'));
         if (CakePlugin::loaded('GtwFiles')){
             $this->render('/Users/edit_avatar');
         }
@@ -89,7 +110,13 @@ class UsersController extends AppController {
                             'class' => 'alert-danger'
                     ));
                 }
-                return $this->redirect($this->Auth->redirectUrl());
+                
+                if($this->Session->read('Auth.User.role') == 'admin'){
+                    return $this->redirect($this->Auth->redirectUrl());
+                }
+                else{
+                    return $this->redirect(array("action"=>"profile"));
+                }
             } else {
                 $this->Session->setFlash('Username or password is incorrect', 'alert', array(
                     'plugin' => 'BoostCake',
@@ -244,6 +271,25 @@ class UsersController extends AppController {
             }
         }
     }
+    public function add() {
+        if ($this->request->is('post') || $this->request->is('put')) {
+            $this->request->data["User"]["validated"] = 1;			
+            if ($this->User->save($this->request->data)) {
+				$this->Session->setFlash(__('The user has been created successfully'), 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-success'
+                ));
+                return $this->redirect(array('action' => 'index'));
+            }
+			$this->Session->setFlash(__('Unable to add user. Please, try again.'), 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-danger'
+                ));
+        }
+        $this->set('users',$this->User->find('list'));
+    }
+    
     function profile(){
-	}
+        
+    }
 }
