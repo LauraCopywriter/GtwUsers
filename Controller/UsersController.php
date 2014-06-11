@@ -143,14 +143,13 @@ class UsersController extends AppController {
                     'plugin' => 'BoostCake',
                     'class' => 'alert-success'
                 ));
+                return $this->redirect($this->Auth->redirectUrl());
             }else{
                 $this->Session->setFlash('Error creating your account, please contact an administrator', 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-danger'
                 ));
-            }
-            
-            return $this->redirect($this->Auth->redirectUrl());
+            }                        
         }
     }
     
@@ -272,9 +271,6 @@ class UsersController extends AppController {
             }
         }
     }
-<<<<<<< HEAD
-}
-=======
     public function add() {
         if ($this->request->is('post') || $this->request->is('put')) {
             $this->request->data["User"]["validated"] = 1;			
@@ -297,4 +293,3 @@ class UsersController extends AppController {
         
     }
 }
->>>>>>> 1a04d4c95b03dc2da97162747906e931cfd1c0d1
