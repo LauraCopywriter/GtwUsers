@@ -1,88 +1,83 @@
-<?php echo $this->Html->css('/css/theme'); ?>
 <div class="container">
     <div class="row">
-        <div class="col-sm-6 col-md-4 col-md-offset-4">
+        <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
             <h1 class="text-center login-title">Sign in to continue</h1>
             <div class="account-wall">
-            
-                <img class="profile-img" src="/img/logo.png" alt="">
+                <?php echo $this->Html->image("/GtwUsers/img/logo.png", array("class" => "img-responsive profile-img")); ?>
                 <?php echo $this->Form->create('User', array(
                         'action' => 'signin',
                         'class' => 'form-signin'
                 ));?>
                     <?php echo $this->Session->flash(); ?>
+                    <p class="text-center">
+
+                        <?php
+                            echo $this->Html->link('Create an account',
+                                array(
+                                    'plugin' => 'gtw_users',
+                                    'controller' => 'users',
+                                    'action' => 'signup'
+                                ),
+                                array(
+                                    'class' => 'text-center new-account',
+                                    'style' => 'display:inline-block'
+                                )
+                            );
+                        ?>
+                    </p>
                     <input name="data[User][email]" type="text" class="form-control" placeholder="Email" required autofocus>
                     <input name="data[User][password]" type="password" class="form-control" placeholder="Password" required>
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                    <label class="checkbox pull-left">
+                    <label class="checkbox pull-left col-xs-10">
                         <input name="data[User][remember]" type="checkbox" value="remember-me">
                         Remember me
                     </label>
-                    
-                    <?php echo $this->Html->link('Forgot Password?',
-                        array(
-                            'plugin' => 'gtw_users',
-                            'controller' => 'users',
-                            'action' => 'forgot_password'
-                        ),
-                        array(
-                            'class' => 'pull-right need-help'
-                        )
-                    );?>
                     <div class="clearfix"></div>
-                    <span class='pull-left'>
-                        <?php echo $this->Html->link('Forgot your password?',
-                            array(
-                                'plugin' => 'gtw_users',
-                                'controller' => 'users',
-                                'action' => 'forgot_password'
-                            )
-                        );?>
-                    </span>    
-                    <span class="clearfix"></span>
+                    <div class="break-text">
+                      <span> &nbsp;&nbsp; OR &nbsp;&nbsp; </span>
+                    </div>
+                    <p class="text-left">
+
+                    
+                    
+                        <?php 
+                            echo $this->Html->link('<button class="btn btn-lg btn-primary btn-block" ><i class="fa fa-google"></i> &nbsp; Sign in with Google</button>', 
+                                array(
+                                    'plugin' => 'gtw_users',
+                                    'controller' => 'social_signup',
+                                    'action' => 'google'
+                                ),
+                                array(        
+                                    'escape' => false
+                                )
+                            );
+                            echo "&nbsp;";
+                            echo $this->Html->link('<button class="btn btn-lg btn-primary btn-block"><i class="fa fa-facebook"></i> &nbsp; Sign in with Facebook</button>',
+                                array(
+                                    'plugin' => 'gtw_users',
+                                    'controller' => 'social_signup',
+                                    'action' => 'facebook'
+                                ),
+                                array(                       
+                                    'escape' => false
+                                )
+                            );
+                        ?>            
+                    </p>
                     
                 </form>
-                
+                <div class="clearfix"></div>
             </div>
-            <div>
-            <?php 
-                echo $this->Html->link('Create an account',
+            <p class="text-center">
+                <br>
+                <?php echo $this->Html->link('Forgot your password?',
                     array(
                         'plugin' => 'gtw_users',
                         'controller' => 'users',
-                        'action' => 'signup'
-                    ),
-                    array(
-                        'class' => 'text-center new-account',
-                        'style' => 'display:inline-block'
+                        'action' => 'forgot_password'
                     )
-                );
-                echo "&nbsp;&nbsp;|&nbsp;&nbsp;";
-                echo $this->Html->link($this->Html->image("GtwUsers.icon_facebook.png", array("height"=>"22")),
-                    array(
-                        'plugin' => 'gtw_users',
-                        'controller' => 'social_signup',
-                        'action' => 'facebook'
-                    ),
-                    array(        
-                        'title'=> 'Login using Facebook',
-                        'escape' => false
-                    )
-                );
-                echo "&nbsp;";
-                echo $this->Html->link($this->Html->image("GtwUsers.icon_google.png", array("height"=>"22")),
-                    array(
-                        'plugin' => 'gtw_users',
-                        'controller' => 'social_signup',
-                        'action' => 'google'
-                    ),
-                    array(                       
-                        'title'=> 'Login using Google',
-                        'escape' => false
-                    )
-                );
-            ?>            
-            </div>            
+                );?>
+            </p>
         </div>
     </div>
 </div>

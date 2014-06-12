@@ -1,10 +1,9 @@
-<?php echo $this->Html->css('/css/theme'); ?>
 <div class="container">
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
             <h1 class="text-center login-title">Reset your password</h1>
             <div class="account-wall">            
-                <?php echo $this->Html->image('logo.png',array('class'=>'profile-img'))?>
+                <?php echo $this->Html->image("/GtwUsers/img/logo.png", array("class" => "img-responsive profile-img")); ?>
                 <?php echo $this->Form->create('User', array(
                         'action' => 'reset_password/'.$userId.'/'.$token,
                         'class' => 'form-signin'
