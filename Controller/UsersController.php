@@ -93,7 +93,8 @@ class UsersController extends AppController {
     }
     
     public function signin(){
-        $this->layout = false;
+        $this->layout = 'GtwUsers.users';
+
         if ($this->request->is('post')) {
             
             // login
@@ -133,7 +134,7 @@ class UsersController extends AppController {
     }
     
     public function signup() {
-        $this->layout = false;
+        $this->layout = 'GtwUsers.users';
         
         if ($this->request->is('post')) {
             $this->User->create();
@@ -154,7 +155,7 @@ class UsersController extends AppController {
     }
     
     public function confirmation($userId = null, $token = null) {
-        $this->layout = false;
+        $this->layout = 'GtwUsers.users';
         
         if($userId || $token){
             $user = $this->User->confirmation($userId, $token);
@@ -211,7 +212,7 @@ class UsersController extends AppController {
         if ($this->Auth->login()){
              return $this->redirect($this->Auth->redirectUrl());           
         }    
-        $this->layout = false;
+        $this->layout = 'GtwUsers.users';
         if ($this->request->is('post')){
             $arrResponse = $this->User->ForgotPasswordEmail($this->request->data['User']['email']);
             if(!empty($arrResponse)){
@@ -232,7 +233,7 @@ class UsersController extends AppController {
     }
     
     public function reset_password($userId = null, $token = null){
-        $this->layout = false;        
+        $this->layout = 'GtwUsers.users';
         if($userId && $token){
             $arrResponse = $this->User->checkForgotPassword($userId,$token);
             if($arrResponse['status']=='fail'){
