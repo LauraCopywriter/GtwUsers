@@ -80,3 +80,13 @@
   display: block;
   margin-top: 10px;
 }
+body {
+  background-color: #eee;
+  margin-top: 50px;
+}
+.break-text {
+  background-color: #ddd;
+}
+.break-text span {
+  background-color: #f7f7f7;
+}
