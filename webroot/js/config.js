@@ -11,12 +11,12 @@ requirejs.config({
     
     paths: {
         app:        '/js/app',
-        basepath:   '../GtwRequire/js/basepath',
+        basepath:   baseUrl+'GtwRequire/js/basepath',
         
         // Gtw Plugins
-        ui:     '../GtwUi/js',
+        ui:     baseUrl+'GtwUi/js',
+        users:  baseUrl+'GtwUsers/js',
         //contact:'/GtwContact/js',
-        users:  '/GtwUsers/js',
         //files:  '/GtwFiles/js',
         
         // Libs
