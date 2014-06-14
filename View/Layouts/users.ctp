@@ -25,9 +25,7 @@
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
-
-		echo $this->Html->css('/GtwUsers/css/layout');                
-                
+		echo $this->Html->css('/GtwUsers/css/layout');                                
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
