@@ -26,14 +26,7 @@
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css');
-		echo $this->Html->css('//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css');
-		echo $this->Html->css('/GtwUsers/css/layout');
-                
-                //echo $this->Html->script('//code.jquery.com/jquery-1.11.0.min.js');
-		//echo $this->Html->script('//ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js');
-		//echo $this->Html->script('//ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/additional-methods.min.js');
-		//echo $this->Html->script('//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js');
+		echo $this->Html->css('/GtwUsers/css/layout');                
                 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
