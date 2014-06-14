@@ -1,3 +1,7 @@
+<?php 
+ $this->Helpers->load('GtwRequire.GtwRequire');
+echo $this->Require->req('users/register_validation'); 
+?>
 <div class="container">
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -8,7 +12,9 @@
                 <?php echo $this->Form->create('User', array(
                         'action' => 'signup',
                         'class' => 'form-signin',
-                        'parsley-validate'
+                        'parsley-validate',
+                        'id'=>'UserSignupForm',
+                        'novalidate'=>'novalidate'
                 ));?>
             
                     <div class="form-group">

@@ -86,7 +86,7 @@ class UsersController extends AppController {
         } else {
             $this->request->data = $this->User->safeRead(null, $this->User->id);
         }
-        $this->set('companies',$this->User->find('list'));
+        $this->set('users',$this->User->find('list'));
         if (CakePlugin::loaded('GtwFiles')){
             $this->render('/Users/edit_avatar');
         }
