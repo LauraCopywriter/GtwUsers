@@ -29,6 +29,7 @@ class UsersController extends AppController {
     }
     
     public function index(){   
+         $this->layout = 'GtwUsers.users';
         	$this->User->recursive = 0;
 		$arrConditions = array();
 		if($this->Session->read('Auth.User.role')!='admin'){

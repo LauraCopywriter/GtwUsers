@@ -6,13 +6,16 @@
  */
 
 $this->Helpers->load('GtwRequire.GtwRequire');
-$this->GtwRequire->req("ui/datatables");
+
+//$this->GtwRequire->req("ui/datatables");
+$this->GtwRequire->req("ui/calendar"); 
+$this->GtwRequire->req('ui/wysiwyg');
 ?>
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<div class="row">
 			<div class="col-md-8"><h3 style='margin-top:0px'>Users</h3></div>
-			<div class="col-md-4 text-right"><?php echo $this->Html->actionIconBtn('fa fa-plus',' Add User','add',array(),'btn-primary');?></div>
+			<div class="col-md-4 text-right"><?php echo $this->Html->actionIconBtn('fa fa-plus',' Add User','add',array(),'btn-primary'); ?></div>
 		</div>
 	</div>
 	<table class="table table-hover table-striped table-bordered">
