@@ -29,15 +29,9 @@ class UsersController extends AppController {
     }
     
     public function index(){   
-        	$this->User->recursive = 0;
-		$arrConditions = array();
-		if($this->Session->read('Auth.User.role')!='admin'){
-			//$arrConditions = array('company_id'=>$this->Session->read('Auth.User.company_id'));
-		}
-                        $this->paginate = array(
-                            'User' => array(
-				'order' => array('id' => 'desc'),
-				//'conditions' => $arrConditions
+        $this->paginate = array(
+            'User' => array(
+				'order' => array('id' => 'desc')
 			)
 		);
         $this->set('users', $this->paginate('User'));
