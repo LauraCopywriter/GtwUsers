@@ -5,7 +5,7 @@
         </a>
         <ul class="dropdown-menu">
             <li>
-                <?php echo $this->Html->link( 'profile', array(
+                <?php echo $this->Html->link( 'Profile', array(
                     'plugin' => 'gtw_users',
                     'controller' => 'users', 
                     'action' => 'edit',
@@ -13,7 +13,14 @@
                 )) ?>
             </li>
             <li>
-                <?php echo $this->Html->link( 'signout', array(
+                <?php echo $this->Html->link( 'Change Password', array(
+                    'plugin' => 'gtw_users',
+                    'controller' => 'users', 
+                    'action' => 'change_password'
+                )) ?>
+            </li>
+            <li>
+                <?php echo $this->Html->link( 'Signout', array(
                     'plugin' => 'gtw_users',
                     'controller' => 'users', 
                     'action' => 'signout'
