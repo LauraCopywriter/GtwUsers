@@ -53,15 +53,18 @@ $this->GtwRequire->req('ui/wysiwyg');
 							<?php echo $user['User']['modified']; ?>
 						</td>
 						<td class="text-center">
-							<span class="text-center">
-								<?php echo $this->Html->actionIcon('fa fa-pencil', 'edit', $user['User']['id']);?>
-								&nbsp;
+							<span class="text-left">
 								<?php 
-                                                                //if($this->Session->read('Auth.User.role')!='admin'){
-                                                                if($user['User']['role'] != 'admin'){
-                                                                echo $this->Html->link('<i class="fa fa-trash-o"> </i>',array('controller'=>'users','action'=>'delete',$user['User']['id']),array('role'=>'button','escape'=>false,'title'=>'Delete this user'),'Are you sure? You want to delete this user.');
-                                                                }
-                                                                        ?>
+                                    echo $this->Html->actionIcon('fa fa-pencil', 'edit', $user['User']['id']);
+                                    echo '&nbsp;&nbsp;';
+                                    if (CakePlugin::loaded('GtwFiles')){
+                                        echo $this->Html->link('<i class="fa fa-file"> </i>',array('plugin'=>'gtw_files','controller'=>'files','action'=>'index',$user['User']['id']),array('title'=>'Click here to view file uploaded by '.$user['User']['first'],'escape'=>false));
+                                        echo '&nbsp;&nbsp;';
+                                    }
+                                    if($user['User']['role'] != 'admin'){
+                                        echo $this->Html->link('<i class="fa fa-trash-o"> </i>',array('controller'=>'users','action'=>'delete',$user['User']['id']),array('role'=>'button','escape'=>false,'title'=>'Delete this user'),'Are you sure? You want to delete this user.');
+                                    }
+                                ?>
 							</span>
 						</td>
 					</tr>

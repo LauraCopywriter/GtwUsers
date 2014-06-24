@@ -17,7 +17,7 @@ requirejs.config({
         ui:     baseUrl+'GtwUi/js',
         users:  baseUrl+'GtwUsers/js',
         //contact:'/GtwContact/js',
-        //files:  '/GtwFiles/js',
+        files:  baseUrl+'/GtwFiles/js',
         
         // Libs
         jquery:             '//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min',
