@@ -29,9 +29,11 @@ class UsersController extends AppController {
     }
     
     public function index(){   
+        $this->layout = 'GtwUsers.users';
+        $this->User->recursive = 0;
         $this->paginate = array(
             'User' => array(
-				'order' => array('id' => 'desc')
+                'order' => array('id' => 'desc')
 			)
 		);
         $this->set('users', $this->paginate('User'));
@@ -80,6 +82,7 @@ class UsersController extends AppController {
         } else {
             $this->request->data = $this->User->safeRead(null, $this->User->id);
         }
+        $this->set('users',$this->User->find('list'));
         if (CakePlugin::loaded('GtwFiles')){
             $this->render('/Users/edit_avatar');
         }
@@ -286,4 +289,48 @@ class UsersController extends AppController {
     function profile(){
         
     }
+    public function change_password() {
+		if (! empty ( $this->request->data )){
+			$password = $this->User->find ('first', array (
+														'fields' => array ('password' ), 
+														'conditions' => array (
+																	'id'=>$this->Session->read ('Auth.User.id')
+																),
+														'recursive' => "-1" )
+													);
+													
+			if (AuthComponent::password($this->request->data ['User']['current_password'] ) != $password ['User'] ['password']) {
+				$this->Session->setFlash(__('Old Password does not match.'), 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-danger'
+                ));
+			} elseif ($this->request->data ['User'] ['new_password'] != $this->request->data ['User'] ['confirm_password']){
+				$this->Session->setFlash(__('Confirm Password entered does not match.'), 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-danger'
+                ));
+			} elseif ($this->request->data ['User'] ['new_password'] == "") {
+				$this->Session->setFlash(__('New Password Must Not Blank'), 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-danger'
+                ));
+			} else {
+				$this->request->data['User']['id'] = $this->Session->read ( 'Auth.User.id' );
+				$this->request->data['User']['password'] = $this->request->data['User']['new_password'];
+				$this->request->data['User']['confirm_password'] = AuthComponent::password($this->request->data ['User']['confirm_password']);
+				if ($this->User->save ( $this->request->data )) {
+					$this->Session->setFlash(__('Password has been updated Successfully.'), 'alert', array(
+						'plugin' => 'BoostCake',
+						'class' => 'alert-success'
+					));
+					$this->redirect ( array ('action' => 'index' ) );
+				} else {
+					$this->Session->setFlash(__('Unable to Change Password, Please try again.'), 'alert', array(
+						'plugin' => 'BoostCake',
+						'class' => 'alert-danger'
+					));
+				}
+			}
+		}
+	}
 }
