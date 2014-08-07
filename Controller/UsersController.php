@@ -29,7 +29,7 @@ class UsersController extends AppController {
     }
     
     public function index(){   
-        $this->layout = 'GtwUsers.users';
+        //$this->layout = 'GtwUsers.users';
         $this->User->recursive = 0;
         $this->paginate = array(
             'User' => array(
