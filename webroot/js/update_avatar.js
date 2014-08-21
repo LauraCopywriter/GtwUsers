@@ -1,4 +1,4 @@
-define(['jquery'], function ($) {
+define(['jquery', 'basepath'], function ($, basepath) {
     
     return function(id, path){
         $.ajax({
