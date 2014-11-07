@@ -10,7 +10,7 @@
 			$this->Helpers->load('GtwRequire.GtwRequire');
 			echo $this->GtwRequire->req('users/reset_password');
 			echo $this->GtwRequire->req('files/filepicker');
-			echo CakePlugin::loaded('GtwFiles');
+			CakePlugin::loaded('GtwFiles');
 		?>
 		<?php echo $this->Form->create('User', array('inputDefaults' => array('div' => 'col-md-12 form-group','class' => 'form-control'),'class' => 'form-horizontal','id'=>'CompanyAddForm')); ?>
 		<input id="user-id" type="hidden" value="<?php echo $this->request->data['User']['id'] ?>" />

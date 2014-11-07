@@ -40,7 +40,12 @@ class User extends AppModel {
             )
         )
     );
-    
+    public function __construct (){
+		if (CakePlugin::loaded('GtwFiles')){
+			$this->belongsTo = array('GtwFiles.File');
+		}
+		parent::__construct();
+	}
     public function beforeSave($options = array()) {
         if (isset($this->data['User']['password'])) {
             $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);

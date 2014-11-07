@@ -16,7 +16,6 @@ class UsersController extends AppController {
     
     public function beforeFilter() {
         parent::beforeFilter();
-        
         $this->Auth->allow('signup', 'signin', 'signout', 'confirmation','forgot_password','reset_password');
         
         if( $this->Session->read('Auth.User') ){
@@ -26,8 +25,8 @@ class UsersController extends AppController {
         if( is_null( Configure::read('Gtw.admin_mail') ) ){
             echo 'Users plugin configuration error'; exit;
         }
-    }
-    
+	}
+
     public function index(){   
          $this->layout = 'GtwUsers.users';
         $this->User->recursive = 0;
@@ -84,8 +83,11 @@ class UsersController extends AppController {
                     'plugin' => 'BoostCake',
                     'class' => 'alert-danger'
                 ));
-        } else {
-            $this->request->data = $this->User->safeRead(null, $this->User->id);
+        } else {			
+            $this->request->data = $this->User->safeRead(null,$this->User->id);
+			if (!empty($this->request->data['File']['filename'])){
+				$this->set('avatar',$this->User->File->getUrl($this->request->data['File']['filename']));
+			}
         }
         $this->set('users',$this->User->find('list'));
         if (CakePlugin::loaded('GtwFiles')){
@@ -200,13 +202,37 @@ class UsersController extends AppController {
         }
     }
     
-    public function update_avatar($userId, $fileId){
+    public function update_avatar($userId=0, $fileId=0){
+		if(!empty($this->request->data['id'])){
+			$userId = $this->request->data['id'];
+		}
+		if(!empty($this->request->data['file_id'])){
+			$fileId = $this->request->data['file_id'];
+		}		
         $user = $this->User->safeRead(null, $userId);
         $oldFile = $user['User']['file_id'];
         $user['User']['file_id'] = $fileId;
+
         if ($this->User->save($user)) {
-            $this->User->File->delete($oldFile);
-        }
+			$this->User->File->deleteFile($oldFile);
+			$this->User->File->id = $fileId;
+			return new CakeResponse(array(
+				'body'=> json_encode(array(
+					'message' => __('Profile photo has been change successfully.'),
+					'success' => True,
+					'file' => '/'.$this->User->File->getUrl($this->User->File->field('filename')),
+				)),
+				'status' => 200
+			));
+        }else{
+			return new CakeResponse(array(
+				'body'=> json_encode(array(
+					'message' => __('Unable to change profile photo, Try again.'),
+					'success' => false
+				)),
+				'status' => 200
+			));
+		}
     }
     public function forgot_password(){
         //Check For Already Logged In
