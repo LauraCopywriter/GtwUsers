@@ -322,7 +322,7 @@ class UsersController extends AppController {
 														'conditions' => array (
 																	'id'=>$this->Session->read ('Auth.User.id')
 																),
-														'recursive' => "-1" )
+														'recursive' => -1 )
 													);
 													
 			if (AuthComponent::password($this->request->data ['User']['current_password'] ) != $password ['User'] ['password']) {
