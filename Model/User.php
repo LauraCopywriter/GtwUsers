@@ -150,8 +150,8 @@ class User extends AppModel {
         $arrResponse = array('status'=>'fail','message'=>'Unable to send forgot password email, Please try again');
         if(empty($user)){
         	return array('status'=>'fail','message'=>'No matching email found');	
-        }elseif (empty($user['User']['validated'])){
-        	return array('status'=>'fail','message'=>'Your email is not validated yet');
+        /*}elseif (empty($user['User']['validated'])){
+        	return array('status'=>'fail','message'=>'Your email is not validated yet');*/
         }
         unset($user['User']['password']);
         
@@ -188,5 +188,36 @@ class User extends AppModel {
         	}
         }
         return $arrResponse;        
-    }    
+    }
+	public function ResendVerification($email){
+        $user = $this->findByEmail($email);
+        
+		if(empty($user)){
+        	return array('status'=>'fail','message'=>'No matching email found. Please try with correct email address.');	
+        }elseif (!empty($user['User']['validated'])){
+        	return array('status'=>'fail','message'=>'Your email address is already validated, please use email and password to login');
+        }else{
+			unset($user['User']['password']);        
+			$user['User']['token'] = md5(uniqid(rand(),true));
+			$user['User']['token_creation'] = date("Y-m-d H:i:s");        
+			
+			$this->save($user);
+			$this->ResendVerificationEmail($user);
+			return array('status'=>'success','message'=>__('The email was resent. Please check your inbox.'));
+		}
+    }
+	public function ResendVerificationEmail($user){
+        App::uses('CakeEmail', 'Network/Email');
+        
+        $email = new CakeEmail();
+        
+        $email->template('GtwUsers.resend_code');
+        $email->emailFormat('html');
+        $email->viewVars(array('userId' => $user['User']['id'], 'token' => $user['User']['token'],'user'=>$user['User']));
+        
+        $email->from(Configure::read('Gtw.admin_mail'));
+        $email->to($user['User']['email']);
+        $email->subject('Account validation');
+        $response = $email->send();
+    }
 }

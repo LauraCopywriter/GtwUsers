@@ -16,7 +16,7 @@ class UsersController extends AppController {
     
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('signup', 'signin', 'signout', 'confirmation','forgot_password','reset_password');
+        $this->Auth->allow('signup', 'signin', 'signout', 'confirmation','forgot_password','reset_password','resend_verification');
         
         if( $this->Session->read('Auth.User') ){
             $this->Auth->allow('edit');
@@ -357,6 +357,30 @@ class UsersController extends AppController {
 					));
 				}
 			}
+		}
+	}
+	/**
+	 * Checks if an email is already verified and if not renews the expiration time
+	 *
+	 * @return void
+	 */
+	public function resend_verification() {
+		if ($this->request->is('post')) {
+			$arrResponse = $this->User->ResendVerification($this->request->data['User']['email']);
+            if(!empty($arrResponse)){
+                   if($arrResponse['status']=='fail'){
+                     $this->Session->setFlash($arrResponse['message'], 'alert', array(
+                            'plugin' => 'BoostCake',
+                            'class' => 'alert-danger'
+                       ));        
+                   }else{
+                       $this->Session->setFlash($arrResponse['message'], 'alert', array(
+                            'plugin' => 'BoostCake',
+                            'class' => 'alert-success'
+                       ));
+                       return $this->redirect($this->Auth->redirectUrl());
+                   }
+            }			
 		}
 	}
 }
