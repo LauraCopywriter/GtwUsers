@@ -117,8 +117,9 @@ class UsersController extends AppController {
                 if ($this->Session->read('Auth.User.role') == 'admin') {
                     return $this->redirect($this->Auth->redirectUrl());
                 } else {
-                    if(!empty(Configure::read('GtwUser.userLoginRedirect'))){
-                        return $this->redirect(Configure::read('GtwUser.userLoginRedirect'));
+                    $loginRedirect = Configure::read('GtwUser.userLoginRedirect');
+                    if(!empty($loginRedirect)){
+                        return $this->redirect($loginRedirect);
                     }
                     return $this->redirect(array('action'=>'profile'));
                 }
