@@ -108,10 +108,18 @@ class UsersController extends AppController {
                 // User needs to be validated
                 if (!$this->User->isValidated($this->request->data['User']['email'])) {
                     $this->Session->setFlash(
-                            'Please validate your email address.', 'alert', array(
-                        'plugin' => 'BoostCake',
-                        'class' => 'alert-danger'
-                    ));
+                            'Please validate your email address.', 
+                    		'alert_link', 
+                    		array(
+		                        'plugin' => 'GtwUsers',
+		                        'class' => 'alert-danger',
+                    			'link_url' => array(
+			                        'plugin' => 'gtw_users',
+			                        'controller' => 'users',
+			                        'action' => 'resend_verification'
+			                    	),
+                    			'link_text'=> 'Resend Email Verification link'
+		             ));
                 }
 
                 if ($this->Session->read('Auth.User.role') == 'admin') {
@@ -388,8 +396,9 @@ class UsersController extends AppController {
      * @return void
      */
     public function resend_verification() {
-        if ($this->request->is('post')) {
-            $arrResponse = $this->User->ResendVerification($this->request->data['User']['email']);
+        if ($this->request->is('post') || $this->Session->read('Auth.User.email')) {
+        	$email = ($this->Session->read('Auth.User.email')) ? $this->Session->read('Auth.User.email') : $this->request->data['User']['email'];
+        	$arrResponse = $this->User->ResendVerification($email);
             if (!empty($arrResponse)) {
                 if ($arrResponse['status'] == 'fail') {
                     $this->Session->setFlash($arrResponse['message'], 'alert', array(
