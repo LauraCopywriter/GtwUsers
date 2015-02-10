@@ -83,6 +83,14 @@ echo $this->Require->req('users/login_validation');
                         'action' => 'forgot_password'
                     )
                 );?>
+				<br>
+				<?php echo $this->Html->link('Resend the Email Verification',
+                    array(
+                        'plugin' => 'gtw_users',
+                        'controller' => 'users',
+                        'action' => 'resend_verification'
+                    )
+                );?>
             </p>
         </div>
     </div>

@@ -2,7 +2,7 @@
     $this->Helpers->load('GtwRequire.GtwRequire');
     echo $this->GtwRequire->req('users/reset_password');
     echo $this->GtwRequire->req('files/filepicker');
-    echo CakePlugin::loaded('GtwFiles');
+    CakePlugin::loaded('GtwFiles');
 ?>
 
 <?php 
@@ -24,7 +24,13 @@
     <div class="col-md-4">
         <div id = "upload-alert"></div>
         <div id="modal-loader"></div>
-        <img src="http://i.imgur.com/dCVa3ik.jpg" class="img-responsive img-thumbnail" alt="Responsive image">
+        <?php 
+			if(!empty($avatar)){
+				echo $this->Html->image('/'.$avatar,array('class'=>'img-responsive img-thumbnail','id'=>'gtwuserphoto'));
+			}else{
+				echo $this->Html->image('http://i.imgur.com/dCVa3ik.jpg',array('class'=>'img-responsive img-thumbnail','id'=>'gtwuserphoto'));
+			}
+		?>
         <button type="button" class="btn btn-default upload" data-loading-text="Loading..." data-upload-callback="users/update_avatar">Change Avatar</button>
     </div>
     <div class="col-md-8">
