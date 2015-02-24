@@ -350,7 +350,7 @@ class UsersController extends AppController {
             $password = $this->User->find('first', array(
                 'fields' => array('password'),
                 'conditions' => array(
-                    'id' => $this->Session->read('Auth.User.id')
+                    'User.id' => $this->Session->read('Auth.User.id')
                 ),
                 'recursive' => "-1")
             );
