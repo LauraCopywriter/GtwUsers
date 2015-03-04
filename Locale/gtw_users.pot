@@ -16,121 +16,121 @@ msgstr ""
 
 #: Controller/SocialSignupController.php:52
 msgid "Facebook connect failed. Please try again!"
-msgstr ""
+msgstr "Oups! La connexion à Facebook a échoué. Veuillez réessayer."
 
 #: Controller/SocialSignupController.php:90
 msgid "Google connect failed. Please try again!"
-msgstr ""
+msgstr "Oups! La connexion à Google a échoué. Veuillez réessayer."
 
 #: Controller/SocialSignupController.php:133
 msgid "You have successfully connected using %s"
-msgstr ""
+msgstr "Vous vous êtes connecté-e avec succès!"
 
 #: Controller/SocialSignupController.php:142
 msgid "connect failed. Please try again!"
-msgstr ""
+msgstr "Oups! La connexion a échoué. Veuillez réessayer."
 
 #: Controller/UsersController.php:25
 msgid "Users plugin configuration error"
-msgstr ""
+msgstr "Erreur dans la configuration de vos plug-ins d'utilisateur."
 
 #: Controller/UsersController.php:49;72;207
 msgid "Invalid user"
-msgstr ""
+msgstr "Utilisateur incorrect."
 
 #: Controller/UsersController.php:55
 msgid "User deleted"
-msgstr ""
+msgstr "Utilisateur supprimé."
 
 #: Controller/UsersController.php:61
 msgid "User was not deleted"
-msgstr ""
+msgstr "L'utilisateur n'a pas été supprimé."
 
 #: Controller/UsersController.php:76
 msgid "The user has been saved"
-msgstr ""
+msgstr "L'utilisateur a été sauvegardé."
 
 #: Controller/UsersController.php:82
 msgid "The user could not be saved. Please, try again."
-msgstr ""
+msgstr "L'utilisateur n'a pas pu être sauvegardé. Veuillez réessayer."
 
 #: Controller/UsersController.php:111
 msgid "Please validate your email address."
-msgstr ""
+msgstr "Un courriel de confirmation a été envoyé à l'adresse que vous nous avez indiquée. Veuillez valider cette adresse en cliquant dans le lien apparaissant dans le courriel de confirmation."
 
 #: Controller/UsersController.php:135
 msgid "Username or password is incorrect"
-msgstr ""
+msgstr "Le nom d'utilisateur ou le mot de passe est incorrect."
 
 #: Controller/UsersController.php:156
 msgid "Please check your e-mail to validate your account"
-msgstr ""
+msgstr "Pour achever la validation de votre compte, veuillez vérifier si votre adresse courriel a bien été validée."
 
 #: Controller/UsersController.php:162
 msgid "Error creating your account, please contact an administrator"
-msgstr ""
+msgstr "Oups! La création de votre compte a rencontré une erreur. Veuillez contacter un administrateur afin de régler ce problème."
 
 #: Controller/UsersController.php:176
 #: Model/User.php:200
 msgid "Your email address is already validated, please use email and password to login"
-msgstr ""
+msgstr "Votre adresse courriel a déjà été validée. Utilisez votre adresse courriel ainsi que votre mot de passe pour vous connecter."
 
 #: Controller/UsersController.php:182
 msgid "Email address successfuly validated"
-msgstr ""
+msgstr "Votre adresse courriel a été validée avec succès!"
 
 #: Controller/UsersController.php:188
 msgid "The authorization link provided is erroneous, please contact an administrator"
-msgstr ""
+msgstr "Oups! Le lien de confirmation qui vous a été envoyé est erroné. Veuillez contacter un administrateur pour régler ce problème au plus vite."
 
 #: Controller/UsersController.php:196
 msgid "Please check your e-mail for validation link"
-msgstr ""
+msgstr "Connectez-vous sur votre adresse courriel et cliquez sur le lien apparaissant dans le courriel de confirmation que vous avez reçu."
 
 #: Controller/UsersController.php:231
 msgid "Profile photo has been change successfully."
-msgstr ""
+msgstr "Votre photo de profil a été changée avec succès!"
 
 #: Controller/UsersController.php:240
 msgid "Unable to change profile photo, Try again."
-msgstr ""
+msgstr "Impossible de changer votre photo de profil. Veuillez réessayer."
 
 #: Controller/UsersController.php:294
 #: View/Users/reset_password.ctp:34
 msgid "New Password and Confirm Password must be same"
-msgstr ""
+msgstr "Votre nouveau mot de passe et le mot de passe confirmation doivent être identiques."
 
 #: Controller/UsersController.php:305
 msgid "Your password has been updated successfully"
-msgstr ""
+msgstr "Votre mot de passe a été changé avec succès!"
 
 #: Controller/UsersController.php:318
 msgid "The user has been created successfully"
-msgstr ""
+msgstr "L'utilisateur a été créé avec succès!"
 
 #: Controller/UsersController.php:324
 msgid "Unable to add user. Please, try again."
-msgstr ""
+msgstr "Impossile d'ajouter un utilisateur. Veuillez réessayer."
 
 #: Controller/UsersController.php:359
 msgid "Old Password does not match."
-msgstr ""
+msgstr "L'ancien mot de passe n'est pas correct. Veuillez entrer votre ancien mot de passe avant de pouvoir le changer."
 
 #: Controller/UsersController.php:364
 msgid "Confirm Password entered does not match."
-msgstr ""
+msgstr "Le mot de passe de confirmation est incorrect. Veuillez réessayer. "
 
 #: Controller/UsersController.php:369
 msgid "New Password Must Not Blank"
-msgstr ""
+msgstr "Oups! Il semblerait que vous avez oublié de saisir votre nouveau mot de passe. Veuillez saisir votre nouveau mot de passe."
 
 #: Controller/UsersController.php:378
 msgid "Password has been updated Successfully."
-msgstr ""
+msgstr "Votre mot de passe a été changé avec succès!"
 
 #: Controller/UsersController.php:384
 msgid "Unable to Change Password, Please try again."
-msgstr ""
+msgstr "Impossible de changer le mot de passe. Veuillez réessayer."
 
 #: Model/User.php:152
 msgid "Unable to send forgot password email, Please try again"
