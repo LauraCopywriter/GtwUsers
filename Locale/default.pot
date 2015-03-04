@@ -16,17 +16,17 @@ msgstr ""
 
 #: Plugin/GtwEditBoxes/Model/EditBox.php:validation for field name
 msgid "A name is required"
-msgstr ""
+msgstr "Veuillez entrer un nom d'utilisateur."
 
 #: Plugin/GtwEditBoxes/Model/EditBox.php:validation for field name
 msgid "Name is already used"
-msgstr ""
+msgstr "Ce nom d'utilisateur est déjà pris."
 
 #: Plugin/GtwEgoods/Model/Egood.php:validation for field title
 msgid "Please enter Title"
-msgstr ""
+msgstr "Veuillez ajouter un titre."
 
 #: Plugin/GtwEgoods/Model/Egood.php:validation for field description
 msgid "Please enter description"
-msgstr ""
+msgstr "Veuillez entrer une description."
 
