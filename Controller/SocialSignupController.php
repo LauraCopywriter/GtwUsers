@@ -49,7 +49,7 @@ class SocialSignupController extends AppController {
                 $this->__socialSignup($arrUser);
             }
             
-            $this->Session->setFlash('Facebook connect failed. Please try again!', 'alert', array(
+            $this->Session->setFlash(__d('gtw_users','Facebook connect failed. Please try again!'), 'alert', array(
                 'plugin' => 'BoostCake',
                 'class' => 'alert-danger'
             ));
@@ -87,7 +87,7 @@ class SocialSignupController extends AppController {
                 $this->__socialSignup($arrUser);
             }
             
-            $this->Session->setFlash('Google connect failed. Please try again!', 'alert', array(
+            $this->Session->setFlash(__d('gtw_users','Google connect failed. Please try again!'), 'alert', array(
                 'plugin' => 'BoostCake',
                 'class' => 'alert-danger'
             ));
@@ -130,7 +130,7 @@ class SocialSignupController extends AppController {
             $this->SocialConnect->save(array("SocialConnect"=>$arrUser));                
             
             if($this->Auth->login()){
-                $this->Session->setFlash('You have successfully connected using '. ucfirst($arrUser['social_connect_type']), 'alert', array(
+                $this->Session->setFlash(__d('gtw_users','You have successfully connected using %s', ucfirst($arrUser['social_connect_type'])), 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-success'
                 ));
@@ -139,7 +139,7 @@ class SocialSignupController extends AppController {
             }            
         }
         
-        $this->Session->setFlash('connect failed. Please try again!', 'alert', array(
+        $this->Session->setFlash(__d('gtw_users','connect failed. Please try again!'), 'alert', array(
             'plugin' => 'BoostCake',
             'class' => 'alert-danger'
         ));

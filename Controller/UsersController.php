@@ -22,7 +22,7 @@ class UsersController extends AppController {
         }
 
         if (is_null(Configure::read('Gtw.admin_mail'))) {
-            echo 'Users plugin configuration error';
+            echo __d('gtw_users','Users plugin configuration error');
             exit;
         }
     }
@@ -46,19 +46,19 @@ class UsersController extends AppController {
     public function delete($id = null) {
         $this->User->id = $id;
         if (!$this->User->exists()) {
-            $this->Session->setFlash(__('Invalid user'), 'alert', array(
+            $this->Session->setFlash(__d('gtw_users','Invalid user'), 'alert', array(
                 'plugin' => 'BoostCake',
                 'class' => 'alert-danger'
             ));
         }
         if ($this->User->delete()) {
-            $this->Session->setFlash(__('User deleted'), 'alert', array(
+            $this->Session->setFlash(__d('gtw_users','User deleted'), 'alert', array(
                 'plugin' => 'BoostCake',
                 'class' => 'alert-success'
             ));
             return $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('User was not deleted'), 'alert', array(
+        $this->Session->setFlash(__d('gtw_users','User was not deleted'), 'alert', array(
             'plugin' => 'BoostCake',
             'class' => 'alert-danger'
         ));
@@ -69,17 +69,17 @@ class UsersController extends AppController {
         $this->User->id = $userId;
 
         if (!$this->User->exists()) {
-            throw new NotFoundException(__('Invalid user'));
+            throw new NotFoundException(__d('gtw_users','Invalid user'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('The user has been saved'), 'alert', array(
+                $this->Session->setFlash(__d('gtw_users','The user has been saved'), 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-success'
                 ));
                 return $this->redirect(array('action' => 'index'));
             }
-            $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'alert', array(
+            $this->Session->setFlash(__d('gtw_users','The user could not be saved. Please, try again.'), 'alert', array(
                 'plugin' => 'BoostCake',
                 'class' => 'alert-danger'
             ));
@@ -108,7 +108,7 @@ class UsersController extends AppController {
                 // User needs to be validated
                 if (!$this->User->isValidated($this->request->data['User']['email'])) {
                     $this->Session->setFlash(
-                            'Please validate your email address.', 
+                            __d('gtw_users','Please validate your email address.'), 
                     		'alert_link', 
                     		array(
 		                        'plugin' => 'GtwUsers',
@@ -132,7 +132,7 @@ class UsersController extends AppController {
                     return $this->redirect(array('action'=>'profile'));
                 }
             } else {
-                $this->Session->setFlash('Username or password is incorrect', 'alert', array(
+                $this->Session->setFlash(__d('gtw_users','Username or password is incorrect'), 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-danger'
                 ));
@@ -153,13 +153,13 @@ class UsersController extends AppController {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
                 $this->User->signupMail($this->request->data['User']['email']);
-                $this->Session->setFlash('Please check your e-mail to validate your account', 'alert', array(
+                $this->Session->setFlash(__d('gtw_users','Please check your e-mail to validate your account'), 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-success'
                 ));
                 return $this->redirect($this->Auth->redirectUrl());
             } else {
-                $this->Session->setFlash('Error creating your account, please contact an administrator', 'alert', array(
+                $this->Session->setFlash(__d('gtw_users','Error creating your account, please contact an administrator'), 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-danger'
                 ));
@@ -173,19 +173,19 @@ class UsersController extends AppController {
         if ($userId || $token) {
             $user = $this->User->confirmation($userId, $token);
             if (!empty($user['User']['validated'])) {
-                $this->Session->setFlash('Your email address is already validated, please use email and password to login', 'alert', array(
+                $this->Session->setFlash(__d('gtw_users','Your email address is already validated, please use email and password to login'), 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-danger'
                 ));
                 return $this->redirect($this->Auth->redirectUrl());
             } elseif (isset($user) && $this->Auth->login($user['User'])) {
-                $this->Session->setFlash('Email address successfuly validated', 'alert', array(
+                $this->Session->setFlash(__d('gtw_users','Email address successfuly validated'), 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-success'
                 ));
                 return $this->redirect($this->Auth->redirectUrl());
             } else {
-                $this->Session->setFlash('The authorization link provided is erroneous, please contact an administrator', 'alert', array(
+                $this->Session->setFlash(__d('gtw_users','The authorization link provided is erroneous, please contact an administrator'), 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-danger'
                 ));
@@ -193,7 +193,7 @@ class UsersController extends AppController {
             }
         }
 
-        $this->Session->setFlash('Please check your e-mail for validation link', 'alert', array(
+        $this->Session->setFlash(__d('gtw_users','Please check your e-mail for validation link'), 'alert', array(
             'plugin' => 'BoostCake',
             'class' => 'alert-info'
         ));
@@ -204,7 +204,7 @@ class UsersController extends AppController {
         $this->User->id = $id;
 
         if (!$this->User->exists()) {
-            throw new NotFoundException(__('Invalid user'));
+            throw new NotFoundException(__d('gtw_users','Invalid user'));
         }
         $this->set('user', $this->User->safeRead(null, $id));
         if (CakePlugin::loaded('GtwFiles')) {
@@ -228,7 +228,7 @@ class UsersController extends AppController {
             $this->User->File->id = $fileId;
             return new CakeResponse(array(
                 'body' => json_encode(array(
-                    'message' => __('Profile photo has been change successfully.'),
+                    'message' => __d('gtw_users','Profile photo has been change successfully.'),
                     'success' => True,
                     'file' => '/' . $this->User->File->getUrl($this->User->File->field('filename')),
                 )),
@@ -237,7 +237,7 @@ class UsersController extends AppController {
         } else {
             return new CakeResponse(array(
                 'body' => json_encode(array(
-                    'message' => __('Unable to change profile photo, Try again.'),
+                    'message' => __d('gtw_users','Unable to change profile photo, Try again.'),
                     'success' => false
                 )),
                 'status' => 200
@@ -291,7 +291,7 @@ class UsersController extends AppController {
         $this->set(compact('userId', 'token'));
         if ($this->request->is('post')) {
             if ($this->request->data['User']['new_password'] != $this->request->data['User']['new_password']) {
-                $this->Session->setFlash('New Password and Confirm Password must be same', 'alert', array(
+                $this->Session->setFlash(__d('gtw_users','New Password and Confirm Password must be same'), 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-danger'
                 ));
@@ -302,7 +302,7 @@ class UsersController extends AppController {
                 $this->request->data['User']['token_creation'] = date("Y-m-d H:i:s");
                 $this->User->save($this->request->data);
 
-                $this->Session->setFlash('Your password has been updated successfully', 'alert', array(
+                $this->Session->setFlash(__d('gtw_users','Your password has been updated successfully'), 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-success'
                 ));
@@ -315,13 +315,13 @@ class UsersController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             $this->request->data["User"]["validated"] = 1;
             if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('The user has been created successfully'), 'alert', array(
+                $this->Session->setFlash(__d('gtw_users','The user has been created successfully'), 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-success'
                 ));
                 return $this->redirect(array('action' => 'index'));
             }
-            $this->Session->setFlash(__('Unable to add user. Please, try again.'), 'alert', array(
+            $this->Session->setFlash(__d('gtw_users','Unable to add user. Please, try again.'), 'alert', array(
                 'plugin' => 'BoostCake',
                 'class' => 'alert-danger'
             ));
@@ -356,17 +356,17 @@ class UsersController extends AppController {
             );
 
             if (AuthComponent::password($this->request->data ['User']['current_password']) != $password ['User'] ['password']) {
-                $this->Session->setFlash(__('Old Password does not match.'), 'alert', array(
+                $this->Session->setFlash(__d('gtw_users','Old Password does not match.'), 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-danger'
                 ));
             } elseif ($this->request->data ['User'] ['new_password'] != $this->request->data ['User'] ['confirm_password']) {
-                $this->Session->setFlash(__('Confirm Password entered does not match.'), 'alert', array(
+                $this->Session->setFlash(__d('gtw_users','Confirm Password entered does not match.'), 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-danger'
                 ));
             } elseif ($this->request->data ['User'] ['new_password'] == "") {
-                $this->Session->setFlash(__('New Password Must Not Blank'), 'alert', array(
+                $this->Session->setFlash(__d('gtw_users','New Password Must Not Blank'), 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-danger'
                 ));
@@ -375,13 +375,13 @@ class UsersController extends AppController {
                 $this->request->data['User']['password'] = $this->request->data['User']['new_password'];
                 $this->request->data['User']['confirm_password'] = AuthComponent::password($this->request->data ['User']['confirm_password']);
                 if ($this->User->save($this->request->data)) {
-                    $this->Session->setFlash(__('Password has been updated Successfully.'), 'alert', array(
+                    $this->Session->setFlash(__d('gtw_users','Password has been updated Successfully.'), 'alert', array(
                         'plugin' => 'BoostCake',
                         'class' => 'alert-success'
                     ));
                     $this->redirect(array('action' => 'index'));
                 } else {
-                    $this->Session->setFlash(__('Unable to Change Password, Please try again.'), 'alert', array(
+                    $this->Session->setFlash(__d('gtw_users','Unable to Change Password, Please try again.'), 'alert', array(
                         'plugin' => 'BoostCake',
                         'class' => 'alert-danger'
                     ));

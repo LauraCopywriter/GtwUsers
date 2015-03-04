@@ -18,7 +18,7 @@ echo $this->Require->req('users/login_validation');
                     <p class="text-center">
 
                         <?php
-                            echo $this->Html->link('Create an account',
+                            echo $this->Html->link(__d('gtw_users','Create an account'),
                                 array(
                                     'plugin' => 'gtw_users',
                                     'controller' => 'users',
@@ -31,12 +31,12 @@ echo $this->Require->req('users/login_validation');
                             );
                         ?>
                     </p>
-                    <input name="data[User][email]" type="text" class="form-control" placeholder="Email" required autofocus>
-                    <input name="data[User][password]" type="password" class="form-control" placeholder="Password" required>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    <input name="data[User][email]" type="text" class="form-control" placeholder="<?php echo __d('gtw_users','Email');?>" required autofocus>
+                    <input name="data[User][password]" type="password" class="form-control" placeholder="<?php echo __d('gtw_users','Password');?>" required>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit"><?php echo __d('gtw_users','Sign in');?></button>
                     <label class="checkbox pull-left col-xs-10">
                         <input name="data[User][remember]" type="checkbox" value="remember-me">
-                        Remember me
+                        <?php echo __d('gtw_users','Remember me');?>
                     </label>
                     <div class="clearfix"></div>
                     <div class="break-text">
@@ -47,7 +47,7 @@ echo $this->Require->req('users/login_validation');
                     
                     
                         <?php 
-                            echo $this->Html->link('<button class="btn btn-lg btn-primary btn-block" ><i class="fa fa-google"></i> &nbsp; Sign in with Google</button>', 
+                            echo $this->Html->link('<button class="btn btn-lg btn-primary btn-block" ><i class="fa fa-google"></i> &nbsp; '.__d('gtw_users','Sign in with Google').'</button>', 
                                 array(
                                     'plugin' => 'gtw_users',
                                     'controller' => 'social_signup',
@@ -58,7 +58,7 @@ echo $this->Require->req('users/login_validation');
                                 )
                             );
                             echo "&nbsp;";
-                            echo $this->Html->link('<button class="btn btn-lg btn-primary btn-block"><i class="fa fa-facebook"></i> &nbsp; Sign in with Facebook</button>',
+                            echo $this->Html->link('<button class="btn btn-lg btn-primary btn-block"><i class="fa fa-facebook"></i> &nbsp; '.__d('gtw_users','Sign in with Facebook').'</button>',
                                 array(
                                     'plugin' => 'gtw_users',
                                     'controller' => 'social_signup',
@@ -76,7 +76,7 @@ echo $this->Require->req('users/login_validation');
             </div>
             <p class="text-center">
                 <br>
-                <?php echo $this->Html->link('Forgot your password?',
+                <?php echo $this->Html->link( __d('gtw_users','Forgot your password?'),
                     array(
                         'plugin' => 'gtw_users',
                         'controller' => 'users',
@@ -84,7 +84,7 @@ echo $this->Require->req('users/login_validation');
                     )
                 );?>
 				<br>
-				<?php echo $this->Html->link('Resend the Email Verification',
+				<?php echo $this->Html->link( __d('gtw_users', 'Resend the Email Verification'),
                     array(
                         'plugin' => 'gtw_users',
                         'controller' => 'users',

@@ -5,7 +5,7 @@ echo $this->Require->req('users/forgotpassword_validation');
 <div class="container">
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
-            <h1 class="text-center login-title">Forgot your password?</h1>
+            <h1 class="text-center login-title"><?php echo __d('gtw_users', 'Forgot your password?'); ?></h1>
             <div class="account-wall">            
                 <?php echo $this->Html->image("/GtwUsers/img/logo.png", array("class" => "img-responsive profile-img")); ?>
                 <?php echo $this->Form->create('User', array(
@@ -18,11 +18,11 @@ echo $this->Require->req('users/forgotpassword_validation');
                     <div class='form-group'>
                     	<input name="data[User][email]" type="email" class="form-control" autofocus placeholder="Email" parsley-trigger="change" required>
                     </div>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit"><?php echo __d('gtw_users', 'Submit'); ?></button>
                     <span class="clearfix"></span>
                 </form>
             </div>
-            <?php echo $this->Html->link('Already have an account?',
+            <?php echo $this->Html->link(__d('gtw_users', 'Already have an account?'),
                 array(
                     'plugin' => 'gtw_users',
                     'controller' => 'users',

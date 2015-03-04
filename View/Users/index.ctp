@@ -14,25 +14,25 @@ $this->GtwRequire->req('ui/wysiwyg');
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<div class="row">
-			<div class="col-md-8"><h3 style='margin-top:0px'>Users</h3></div>
-			<div class="col-md-4 text-right"><?php echo $this->Html->actionIconBtn('fa fa-plus',' Add User','add',array(),'btn-primary'); ?></div>
+			<div class="col-md-8"><h3 style='margin-top:0px'><?php echo __d('gtw_users', 'Users'); ?></h3></div>
+			<div class="col-md-4 text-right"><?php echo $this->Html->actionIconBtn('fa fa-plus',__d('gtw_users', ' Add User'),'add',array(),'btn-primary'); ?></div>
 		</div>
 	</div>
 	<table class="table table-hover table-striped table-bordered">
 		<thead>
 			<tr>
-				<th>Id</th>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Email</th>				
-				<th>Last Updated</th>
-				<th class='text-center'>Action</th>
+				<th><?php echo __d('gtw_users', 'Id'); ?></th>
+				<th><?php echo __d('gtw_users', 'First Name'); ?></th>
+				<th><?php echo __d('gtw_users', 'Last Name'); ?></th>
+				<th><?php echo __d('gtw_users', 'Email'); ?></th>				
+				<th><?php echo __d('gtw_users', 'Last Updated'); ?></th>
+				<th class='text-center'><?php echo __d('gtw_users', 'Action'); ?></th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php if(empty($users)){?>
 				<tr>
-					<td colspan='7' class='text-warning'>No record found.</td>
+					<td colspan='7' class='text-warning'><?php echo __d('gtw_users', 'No record found.'); ?></td>
 				</tr>
 			<?php }else{?>			
 				 <?php foreach ($users as $user): ?>
@@ -58,11 +58,11 @@ $this->GtwRequire->req('ui/wysiwyg');
                                     echo $this->Html->actionIcon('fa fa-pencil', 'edit', $user['User']['id']);
                                     echo '&nbsp;&nbsp;';
                                     if (CakePlugin::loaded('GtwFiles')){
-                                        echo $this->Html->link('<i class="fa fa-file"> </i>',array('plugin'=>'gtw_files','controller'=>'files','action'=>'index',$user['User']['id']),array('title'=>'Click here to view file uploaded by '.$user['User']['first'],'escape'=>false));
+                                        echo $this->Html->link('<i class="fa fa-file"> </i>',array('plugin'=>'gtw_files','controller'=>'files','action'=>'index',$user['User']['id']),array('title'=>__d('gtw_users', 'Click here to view file uploaded by %s',$user['User']['first']),'escape'=>false));
                                         echo '&nbsp;&nbsp;';
                                     }
                                     if($user['User']['role'] != 'admin'){
-                                        echo $this->Html->link('<i class="fa fa-trash-o"> </i>',array('controller'=>'users','action'=>'delete',$user['User']['id']),array('role'=>'button','escape'=>false,'title'=>'Delete this user'),'Are you sure? You want to delete this user.');
+                                        echo $this->Html->link('<i class="fa fa-trash-o"> </i>',array('controller'=>'users','action'=>'delete',$user['User']['id']),array('role'=>'button','escape'=>false,'title'=>__d('gtw_users', 'Delete this user')), __d('gtw_users', 'Are you sure? You want to delete this user.'));
                                     }
                                 ?>
 							</span>

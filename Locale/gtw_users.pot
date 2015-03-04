@@ -1,0 +1,398 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2015-03-03 07:35-0500\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/SocialSignupController.php:52
+msgid "Facebook connect failed. Please try again!"
+msgstr ""
+
+#: Controller/SocialSignupController.php:90
+msgid "Google connect failed. Please try again!"
+msgstr ""
+
+#: Controller/SocialSignupController.php:133
+msgid "You have successfully connected using %s"
+msgstr ""
+
+#: Controller/SocialSignupController.php:142
+msgid "connect failed. Please try again!"
+msgstr ""
+
+#: Controller/UsersController.php:25
+msgid "Users plugin configuration error"
+msgstr ""
+
+#: Controller/UsersController.php:49;72;207
+msgid "Invalid user"
+msgstr ""
+
+#: Controller/UsersController.php:55
+msgid "User deleted"
+msgstr ""
+
+#: Controller/UsersController.php:61
+msgid "User was not deleted"
+msgstr ""
+
+#: Controller/UsersController.php:76
+msgid "The user has been saved"
+msgstr ""
+
+#: Controller/UsersController.php:82
+msgid "The user could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/UsersController.php:111
+msgid "Please validate your email address."
+msgstr ""
+
+#: Controller/UsersController.php:135
+msgid "Username or password is incorrect"
+msgstr ""
+
+#: Controller/UsersController.php:156
+msgid "Please check your e-mail to validate your account"
+msgstr ""
+
+#: Controller/UsersController.php:162
+msgid "Error creating your account, please contact an administrator"
+msgstr ""
+
+#: Controller/UsersController.php:176
+#: Model/User.php:200
+msgid "Your email address is already validated, please use email and password to login"
+msgstr ""
+
+#: Controller/UsersController.php:182
+msgid "Email address successfuly validated"
+msgstr ""
+
+#: Controller/UsersController.php:188
+msgid "The authorization link provided is erroneous, please contact an administrator"
+msgstr ""
+
+#: Controller/UsersController.php:196
+msgid "Please check your e-mail for validation link"
+msgstr ""
+
+#: Controller/UsersController.php:231
+msgid "Profile photo has been change successfully."
+msgstr ""
+
+#: Controller/UsersController.php:240
+msgid "Unable to change profile photo, Try again."
+msgstr ""
+
+#: Controller/UsersController.php:294
+#: View/Users/reset_password.ctp:34
+msgid "New Password and Confirm Password must be same"
+msgstr ""
+
+#: Controller/UsersController.php:305
+msgid "Your password has been updated successfully"
+msgstr ""
+
+#: Controller/UsersController.php:318
+msgid "The user has been created successfully"
+msgstr ""
+
+#: Controller/UsersController.php:324
+msgid "Unable to add user. Please, try again."
+msgstr ""
+
+#: Controller/UsersController.php:359
+msgid "Old Password does not match."
+msgstr ""
+
+#: Controller/UsersController.php:364
+msgid "Confirm Password entered does not match."
+msgstr ""
+
+#: Controller/UsersController.php:369
+msgid "New Password Must Not Blank"
+msgstr ""
+
+#: Controller/UsersController.php:378
+msgid "Password has been updated Successfully."
+msgstr ""
+
+#: Controller/UsersController.php:384
+msgid "Unable to Change Password, Please try again."
+msgstr ""
+
+#: Model/User.php:152
+msgid "Unable to send forgot password email, Please try again"
+msgstr ""
+
+#: Model/User.php:154
+msgid "No matching email found"
+msgstr ""
+
+#: Model/User.php:165
+msgid "Please check your e-mail for forgot password"
+msgstr ""
+
+#: Model/User.php:183
+msgid "Invalid forgot password token"
+msgstr ""
+
+#: Model/User.php:187
+msgid "Forgot Password token is expired"
+msgstr ""
+
+#: Model/User.php:189
+msgid "Valid Token"
+msgstr ""
+
+#: Model/User.php:198
+msgid "No matching email found. Please try with correct email address."
+msgstr ""
+
+#: Model/User.php:208
+msgid "The email was resent. Please check your inbox."
+msgstr ""
+
+#: View/Emails/html/forgot_password.ctp:1
+msgid "Forgot Password Email"
+msgstr ""
+
+#: View/Emails/html/forgot_password.ctp:3
+msgid "Please visit the following link to reset your password."
+msgstr ""
+
+#: View/Emails/html/forgot_password.ctp:4
+msgid "This link will expire in 24 Hours."
+msgstr ""
+
+#: View/Emails/html/resend_code.ctp:1
+msgid "Hello %s"
+msgstr ""
+
+#: View/Emails/html/resend_code.ctp:3
+msgid "Account Activation Code"
+msgstr ""
+
+#: View/Emails/html/resend_code.ctp:5
+msgid "Please visit the following link to confirm your account"
+msgstr ""
+
+#: View/Emails/html/signup.ctp:1
+msgid "Account creation confirmation"
+msgstr ""
+
+#: View/Emails/html/signup.ctp:3
+msgid "Please visit the following link to confirm your account creation"
+msgstr ""
+
+#: View/Users/add.ctp:4
+msgid "Add User"
+msgstr ""
+
+#: View/Users/add.ctp:5
+#: View/Users/change_password.ctp:5
+#: View/Users/edit.ctp:5
+msgid " Back"
+msgstr ""
+
+#: View/Users/add.ctp:16
+#: View/Users/edit.ctp:20
+#: View/Users/edit_avatar.ctp:50
+#: View/Users/index.ctp:25
+#: View/Users/signup.ctp:21
+msgid "First Name"
+msgstr ""
+
+#: View/Users/add.ctp:19
+#: View/Users/edit.ctp:23
+#: View/Users/edit_avatar.ctp:53
+#: View/Users/index.ctp:26
+#: View/Users/signup.ctp:25
+msgid "Last Name"
+msgstr ""
+
+#: View/Users/add.ctp:22
+#: View/Users/edit.ctp:26
+#: View/Users/edit_avatar.ctp:39
+#: View/Users/index.ctp:27
+#: View/Users/signin.ctp:34
+msgid "Email"
+msgstr ""
+
+#: View/Users/add.ctp:26
+msgid "Create User"
+msgstr ""
+
+#: View/Users/change_password.ctp:4;24
+msgid "Change Password"
+msgstr ""
+
+#: View/Users/change_password.ctp:13
+msgid "Current Password"
+msgstr ""
+
+#: View/Users/change_password.ctp:17
+#: View/Users/reset_password.ctp:12
+msgid "New Password"
+msgstr ""
+
+#: View/Users/change_password.ctp:21
+#: View/Users/reset_password.ctp:13
+msgid "Confirm Password"
+msgstr ""
+
+#: View/Users/edit.ctp:4
+msgid "Edit User"
+msgstr ""
+
+#: View/Users/edit.ctp:28
+#: View/Users/edit_avatar.ctp:55
+msgid "Save"
+msgstr ""
+
+#: View/Users/edit_avatar.ctp:42;46
+#: View/Users/signin.ctp:35
+#: View/Users/signup.ctp:33
+msgid "Password"
+msgstr ""
+
+#: View/Users/forgot_password.ctp:8
+#: View/Users/signin.ctp:79
+msgid "Forgot your password?"
+msgstr ""
+
+#: View/Users/forgot_password.ctp:21
+msgid "Submit"
+msgstr ""
+
+#: View/Users/forgot_password.ctp:25
+#: View/Users/resend_verification.ctp:23
+#: View/Users/reset_password.ctp:18
+#: View/Users/signup.ctp:40
+msgid "Already have an account?"
+msgstr ""
+
+#: View/Users/index.ctp:17
+msgid "Users"
+msgstr ""
+
+#: View/Users/index.ctp:18
+msgid " Add User"
+msgstr ""
+
+#: View/Users/index.ctp:24
+msgid "Id"
+msgstr ""
+
+#: View/Users/index.ctp:28
+msgid "Last Updated"
+msgstr ""
+
+#: View/Users/index.ctp:29
+msgid "Action"
+msgstr ""
+
+#: View/Users/index.ctp:35
+msgid "No record found."
+msgstr ""
+
+#: View/Users/index.ctp:61
+msgid "Click here to view file uploaded by %s"
+msgstr ""
+
+#: View/Users/index.ctp:65
+msgid "Delete this user"
+msgstr ""
+
+#: View/Users/index.ctp:65
+msgid "Are you sure? You want to delete this user."
+msgstr ""
+
+#: View/Users/profile.ctp:5
+msgid "Welcome : %s $s"
+msgstr ""
+
+#: View/Users/profile.ctp:7
+msgid "Logout"
+msgstr ""
+
+#: View/Users/resend_verification.ctp:8
+#: View/Users/signin.ctp:87
+msgid "Resend the Email Verification"
+msgstr ""
+
+#: View/Users/resend_verification.ctp:18
+msgid "Email Address"
+msgstr ""
+
+#: View/Users/resend_verification.ctp:19
+msgid "Resend Code"
+msgstr ""
+
+#: View/Users/reset_password.ctp:4
+msgid "Reset your password"
+msgstr ""
+
+#: View/Users/reset_password.ctp:14
+msgid "Reset Password"
+msgstr ""
+
+#: View/Users/signin.ctp:21
+msgid "Create an account"
+msgstr ""
+
+#: View/Users/signin.ctp:36
+msgid "Sign in"
+msgstr ""
+
+#: View/Users/signin.ctp:39
+msgid "Remember me"
+msgstr ""
+
+#: View/Users/signin.ctp:50
+msgid "Sign in with Google"
+msgstr ""
+
+#: View/Users/signin.ctp:61
+msgid "Sign in with Facebook"
+msgstr ""
+
+#: View/Users/signup.ctp:8;36
+msgid "Sign up"
+msgstr ""
+
+#: View/Users/signup.ctp:29
+msgid "Email address"
+msgstr ""
+
+#: Model/User.php:validation for field first
+msgid "First name is required"
+msgstr ""
+
+#: Model/User.php:validation for field last
+msgid "Last name is required"
+msgstr ""
+
+#: Model/User.php:validation for field email
+msgid "An email address is required"
+msgstr ""
+
+#: Model/User.php:validation for field email
+msgid "Email address already exists"
+msgstr ""
+
+#: Model/User.php:validation for field password
+msgid "A password is required"
+msgstr ""
+

@@ -36,23 +36,23 @@
     <div class="col-md-8">
         <fieldset>
             <?php echo $this->Form->input('email', array(
-                'label' => 'Email',
+                'label' => __d('gtw_users', 'Email'),
             )); ?>
             <?php echo $this->Form->input('password', array(
-                'label' => 'Password',
+                'label' => __d('gtw_users', 'Password'),
                 'type' => 'hidden'
             )); ?>
             <div class="form-group">
-                <label for="decoy-password">Password</label>
+                <label for="decoy-password"><?php echo __d('gtw_users', 'Password'); ?></label>
                 <input type="password" name="decoy-password" class="form-control" value="DefaultPassword" id="decoy-password">
             </div>
             <?php echo $this->Form->input('first', array(
-                'label' => 'First Name',
+                'label' => __d('gtw_users', 'First Name'),
             )); ?>
             <?php echo $this->Form->input('last', array(
-                'label' => 'Last Name',
+                'label' => __d('gtw_users', 'Last Name'),
             )); ?>
-            <?php echo $this->Form->submit('Save', array(
+            <?php echo $this->Form->submit(__d('gtw_users', 'Save'), array(
                 'div' => false,
                 'class' => 'btn btn-primary'
             )); ?>
