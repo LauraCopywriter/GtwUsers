@@ -134,77 +134,77 @@ msgstr "Impossible de changer le mot de passe. Veuillez réessayer."
 
 #: Model/User.php:152
 msgid "Unable to send forgot password email, Please try again"
-msgstr ""
+msgstr "Impossible d'envoyer le courriel de récupération de mot de passe. Veuillez réessayer."
 
 #: Model/User.php:154
 msgid "No matching email found"
-msgstr ""
+msgstr "Oups! Impossible de trouver une adresse courriel correspondante."
 
 #: Model/User.php:165
 msgid "Please check your e-mail for forgot password"
-msgstr ""
+msgstr "Le courriel de récupération de mot de passe a été envoyé à l'adresse que vous nous avez indiquée. Veuillez vérifier si vous l'avez bien reçu dans votre boîte de réception."
 
 #: Model/User.php:183
 msgid "Invalid forgot password token"
-msgstr ""
+msgstr "Le lien de réinitialisation du mot de passe n'est pas valide."
 
 #: Model/User.php:187
 msgid "Forgot Password token is expired"
-msgstr ""
+msgstr "Le lien de réinitialisation du mot de passe a expiré."
 
 #: Model/User.php:189
 msgid "Valid Token"
-msgstr ""
+msgstr "Votre mot de passe a été réinitialisé avec succès!."
 
 #: Model/User.php:198
 msgid "No matching email found. Please try with correct email address."
-msgstr ""
+msgstr "Aucune adresse courriel correspondante trouvée. Veuillez entrer une adresse courriel valide."
 
 #: Model/User.php:208
 msgid "The email was resent. Please check your inbox."
-msgstr ""
+msgstr "Le courriel de vérification a été envoyé à nouveau. Veuillez vérifier votre boîte de réception."
 
 #: View/Emails/html/forgot_password.ctp:1
 msgid "Forgot Password Email"
-msgstr ""
+msgstr "Courriel de réinitialisation de votre mot de passe"
 
 #: View/Emails/html/forgot_password.ctp:3
 msgid "Please visit the following link to reset your password."
-msgstr ""
+msgstr "Veuillez cliquer sur le lien suivant pour réinitialiser votre mot de passe."
 
 #: View/Emails/html/forgot_password.ctp:4
 msgid "This link will expire in 24 Hours."
-msgstr ""
+msgstr "Ce lien expirera dans 24 heures. Si vous n'avez pas cliqué sur ce lien dans les 24 heures, vous devrez refaire une demande pour recevoir un autre courriel de réinitialisation de votre mot de passe."
 
 #: View/Emails/html/resend_code.ctp:1
 msgid "Hello %s"
-msgstr ""
+msgstr "Bonjour!"
 
 #: View/Emails/html/resend_code.ctp:3
 msgid "Account Activation Code"
-msgstr ""
+msgstr "Courriel d'activation de votre compte"
 
 #: View/Emails/html/resend_code.ctp:5
 msgid "Please visit the following link to confirm your account"
-msgstr ""
+msgstr "Veuillez cliquer sur le lien suivant pour valider la création de votre compte."
 
 #: View/Emails/html/signup.ctp:1
 msgid "Account creation confirmation"
-msgstr ""
+msgstr "Création de votre compte : courriel de confirmation"
 
 #: View/Emails/html/signup.ctp:3
 msgid "Please visit the following link to confirm your account creation"
-msgstr ""
+msgstr "Veuillez cliquer sur le lien suivant pour confirmer la création de votre compte."
 
 #: View/Users/add.ctp:4
 msgid "Add User"
-msgstr ""
+msgstr "Ajouter un utilisateur."
 
 #: View/Users/add.ctp:5
 #: View/Users/change_password.ctp:5
 #: View/Users/edit.ctp:5
 msgid " Back"
-msgstr ""
+msgstr "Retour"
 
 #: View/Users/add.ctp:16
 #: View/Users/edit.ctp:20
@@ -212,7 +212,7 @@ msgstr ""
 #: View/Users/index.ctp:25
 #: View/Users/signup.ctp:21
 msgid "First Name"
-msgstr ""
+msgstr "Prénom"
 
 #: View/Users/add.ctp:19
 #: View/Users/edit.ctp:23
@@ -220,7 +220,7 @@ msgstr ""
 #: View/Users/index.ctp:26
 #: View/Users/signup.ctp:25
 msgid "Last Name"
-msgstr ""
+msgstr "Nom"
 
 #: View/Users/add.ctp:22
 #: View/Users/edit.ctp:26
@@ -228,171 +228,171 @@ msgstr ""
 #: View/Users/index.ctp:27
 #: View/Users/signin.ctp:34
 msgid "Email"
-msgstr ""
+msgstr "Adresse courriel"
 
 #: View/Users/add.ctp:26
 msgid "Create User"
-msgstr ""
+msgstr "Créer un compte utilisateur"
 
 #: View/Users/change_password.ctp:4;24
 msgid "Change Password"
-msgstr ""
+msgstr "Changer le mot de passe"
 
 #: View/Users/change_password.ctp:13
 msgid "Current Password"
-msgstr ""
+msgstr "Mot de passe actuel"
 
 #: View/Users/change_password.ctp:17
 #: View/Users/reset_password.ctp:12
 msgid "New Password"
-msgstr ""
+msgstr "Nouveau mot de passe"
 
 #: View/Users/change_password.ctp:21
 #: View/Users/reset_password.ctp:13
 msgid "Confirm Password"
-msgstr ""
+msgstr "Veuillez confirmer votre mot de passe"
 
 #: View/Users/edit.ctp:4
 msgid "Edit User"
-msgstr ""
+msgstr "Modifier votre profil"
 
 #: View/Users/edit.ctp:28
 #: View/Users/edit_avatar.ctp:55
 msgid "Save"
-msgstr ""
+msgstr "Sauvegarder"
 
 #: View/Users/edit_avatar.ctp:42;46
 #: View/Users/signin.ctp:35
 #: View/Users/signup.ctp:33
 msgid "Password"
-msgstr ""
+msgstr "Mot de passe"
 
 #: View/Users/forgot_password.ctp:8
 #: View/Users/signin.ctp:79
 msgid "Forgot your password?"
-msgstr ""
+msgstr "Vous avez oublié votre mot de passe?"
 
 #: View/Users/forgot_password.ctp:21
 msgid "Submit"
-msgstr ""
+msgstr "Soumettre"
 
 #: View/Users/forgot_password.ctp:25
 #: View/Users/resend_verification.ctp:23
 #: View/Users/reset_password.ctp:18
 #: View/Users/signup.ctp:40
 msgid "Already have an account?"
-msgstr ""
+msgstr "Vous avez déjà un compte?"
 
 #: View/Users/index.ctp:17
 msgid "Users"
-msgstr ""
+msgstr "Utilisateurs"
 
 #: View/Users/index.ctp:18
 msgid " Add User"
-msgstr ""
+msgstr "Ajouter un utilisateur"
 
 #: View/Users/index.ctp:24
 msgid "Id"
-msgstr ""
+msgstr "Id"
 
 #: View/Users/index.ctp:28
 msgid "Last Updated"
-msgstr ""
+msgstr "Dernière mise à jour"
 
 #: View/Users/index.ctp:29
 msgid "Action"
-msgstr ""
+msgstr "Action"
 
 #: View/Users/index.ctp:35
 msgid "No record found."
-msgstr ""
+msgstr "Aucun utilisateur trouvé"
 
 #: View/Users/index.ctp:61
 msgid "Click here to view file uploaded by %s"
-msgstr ""
+msgstr "Veuillez cliquer ici pour visualer le fichier mis à jour."
 
 #: View/Users/index.ctp:65
 msgid "Delete this user"
-msgstr ""
+msgstr "Supprimer cet utilisateur."
 
 #: View/Users/index.ctp:65
 msgid "Are you sure? You want to delete this user."
-msgstr ""
+msgstr "Êtes vous bien sur de vouloir supprimer cet utilisateur?"
 
 #: View/Users/profile.ctp:5
 msgid "Welcome : %s $s"
-msgstr ""
+msgstr "Bienvenue!"
 
 #: View/Users/profile.ctp:7
 msgid "Logout"
-msgstr ""
+msgstr "Déconnexion"
 
 #: View/Users/resend_verification.ctp:8
 #: View/Users/signin.ctp:87
 msgid "Resend the Email Verification"
-msgstr ""
+msgstr "Renvoyer le courriel de vérification"
 
 #: View/Users/resend_verification.ctp:18
 msgid "Email Address"
-msgstr ""
+msgstr "Adresse courriel"
 
 #: View/Users/resend_verification.ctp:19
 msgid "Resend Code"
-msgstr ""
+msgstr "Renvoyer le code de confirmation"
 
 #: View/Users/reset_password.ctp:4
 msgid "Reset your password"
-msgstr ""
+msgstr "Réinitialiser votre mot de passe"
 
 #: View/Users/reset_password.ctp:14
 msgid "Reset Password"
-msgstr ""
+msgstr "Réinitialiser votre mot de passe"
 
 #: View/Users/signin.ctp:21
 msgid "Create an account"
-msgstr ""
+msgstr "Créer un compte"
 
 #: View/Users/signin.ctp:36
 msgid "Sign in"
-msgstr ""
+msgstr "Se connecter"
 
 #: View/Users/signin.ctp:39
 msgid "Remember me"
-msgstr ""
+msgstr "Se souvenir de moi"
 
 #: View/Users/signin.ctp:50
 msgid "Sign in with Google"
-msgstr ""
+msgstr "Se connecter avec Google"
 
 #: View/Users/signin.ctp:61
 msgid "Sign in with Facebook"
-msgstr ""
+msgstr "Se connecter avec Facebook"
 
 #: View/Users/signup.ctp:8;36
 msgid "Sign up"
-msgstr ""
+msgstr "S'inscrire"
 
 #: View/Users/signup.ctp:29
 msgid "Email address"
-msgstr ""
+msgstr "Adresse courriel"
 
 #: Model/User.php:validation for field first
 msgid "First name is required"
-msgstr ""
+msgstr "Veuillez entrer votre prénom."
 
 #: Model/User.php:validation for field last
 msgid "Last name is required"
-msgstr ""
+msgstr "Veuillez entrer votre nom."
 
 #: Model/User.php:validation for field email
 msgid "An email address is required"
-msgstr ""
+msgstr "Veuillez saisir votre adresse courriel."
 
 #: Model/User.php:validation for field email
 msgid "Email address already exists"
-msgstr ""
+msgstr "Cette adresse courriel est déjà utilisée."
 
 #: Model/User.php:validation for field password
 msgid "A password is required"
-msgstr ""
+msgstr "Veuillez saisir votre mot de passe."
 
